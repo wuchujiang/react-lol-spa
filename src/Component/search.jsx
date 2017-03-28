@@ -56,7 +56,12 @@ class Main extends Component {
                             <Icon type="down" />
                         </Link>
                     </div>
-                    <Button className="btn btn-complete" type="primary">搜索</Button>
+                    <Link to={{
+                                pathname: `/searchResult`,
+                                query: {
+                                    keyword: this.state.searchValue
+                                }
+                            }}><Button className="btn btn-complete" type="primary">搜索</Button></Link>
                 </section>
             </section>
             

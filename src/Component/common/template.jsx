@@ -29,9 +29,9 @@ const Main = mySeting => {
         }
 
         componentDidMount() {//获取数据
-            if (this.props.seting.url) {
-                this.props.fetchPosts(this.props.seting.url,this.props.seting.data);
-            }
+            // if (this.props.seting.url) {
+            //     this.props.fetchPosts(this.props.seting.url,this.props.seting.data);
+            // }
         }
 
         componentWillReceiveProps(nextProps) {
@@ -48,10 +48,11 @@ const Main = mySeting => {
 
     //mapStateToProps and mapDispatchToProps
     return connect(state => { //将顶层组件与模版绑定后return回去，配置路由的时候用的就是和redux绑定的组件，所以其实每个路由匹配的都是同一个组件，只不过这个组件的内容不同
-        let {producRecord, saleRecord,requestData, testData, testDatas, areaCheck} = state;
+        let {producRecord, saleRecord,requestData, testData, testDatas, areaCheck, areaList} = state;
         //将所有的数据放在actions里面，优化props里面的数据；
         let actions = {
-            areaCheck: areaCheck
+            areaCheck,
+            areaList
         };
         
         return { 

@@ -4,7 +4,7 @@ import {RECORD_STATE, SAVE_PRODUCT_LIST, NEW_PRODUCT_DATA} from '../types'
 import {DELETE_ITEM} from '../types'
 import {GET_DATA_START , GET_DATA_SUCCESS, TEST_DISPATCH, TESTDATA} from '../types'
 
-import {AREACHECK} from '../types';
+import {AREACHECK, AREALIST} from '../types';
 
 //const initialState = Immutable.fromJS({}) //=Immutable.Map({})
 
@@ -82,6 +82,15 @@ export const testDatas = (state = {obj: 2}, action = {}) => {
 export const areaCheck = (state = {}, action = {}) => {
     switch (action.type) {
         case AREACHECK:
+            return action.data
+        default:
+            return state;
+    }
+}
+
+export const areaList = (state = {}, action = {}) => {
+    switch (action.type) {
+        case AREALIST:
             return action.data
         default:
             return state;

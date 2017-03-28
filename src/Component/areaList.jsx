@@ -11,27 +11,26 @@ import _ from 'lodash';
 class Main extends Component {
     constructor() {
         super();
-        this.state = {
-            areaList: []
-        }
     }
 
     componentWillMount() {
        
     }
     componentDidMount() {
-        Toast.loading('加载中', 0);
-        this.props.getData('http://lolapi.games-cube.com/Area', null, res => {
-            Toast.hide();
-            if(res.code == 0){
-                console.log(res);
-                this.setState({
-                    areaList: res.data
-                })
-            }else{
-                Toast.alert('系统异常');
-            }
-        })
+        let {areaList} = this.props.actions.areaList;
+        let _this = this;
+        if(_.isEmpty(areaList)){
+            Toast.loading('加载中', 0);
+            this.props.getData('http://lolapi.games-cube.com/Area', null, res => {
+                Toast.hide();
+                if(res.code == 0){
+                    console.log(this.props.areaList);
+                    //_this.props.areaList(res.data);
+                }else{
+                    Toast.alert('系统异常');
+                }
+            })
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -50,8 +49,9 @@ class Main extends Component {
     }
    
     render() {
-        let {areaList} = this.state;
+        let {areaList} = this.props.actions.areaList;
         let areaCheck = this.props.actions.areaCheck;
+        console.log(areaList);
         return (
             <section>
                 <Header title="选择大区" />

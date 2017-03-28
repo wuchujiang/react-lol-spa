@@ -1,6 +1,6 @@
 /*
-* 将所有的type单独放在一起，方便管理
-*/
+ * 将所有的type单独放在一起，方便管理
+ */
 
 export const SET_STATE = 'SET_STATE';
 export const RECORD_STATE = 'RECORD_STATE';
@@ -14,3 +14,4 @@ export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const TEST_DISPATCH = 'TEST_DISPATCH';
 export const TESTDATA = 'TESTDATA';
 export const AREACHECK = 'AREACHECK';
+export const AREALIST = 'AREALIST';

@@ -5,8 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin'); //生成html
 
 var pxtorem = require('postcss-pxtorem');
 var svgDirs = [
-  require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. 属于 antd-mobile 内置 svg 文件
-  // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
+    require.resolve('antd-mobile').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
+    // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
 ];
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src'); //__dirname 中的src目录，以此类推
@@ -33,15 +33,15 @@ module.exports = {
         }, {
             test: /\.less$/,
             exclude: /^node_modules$/,
-            loader: ExtractTextPlugin.extract('style', ['css', 'autoprefixer', 'less'])
-         }, {
+            loader: ExtractTextPlugin.extract('style', ['css!postcss', 'autoprefixer', 'less'])
+        }, {
             test: /\.scss$/,
             exclude: /^node_modules$/,
-            loader: ExtractTextPlugin.extract('style', ['css', 'autoprefixer', 'sass']),
+            loader: ExtractTextPlugin.extract('style', ['css!postcss', 'autoprefixer', 'sass']),
             include: [APP_PATH]
         }, {
-             test: /\.css$/i, 
-             loader: ExtractTextPlugin.extract('style', 'css!postcss'),
+            test: /\.css$/i,
+            loader: ExtractTextPlugin.extract('style', 'css!postcss'),
         }, {
             test: /\.(svg)$/i,
             loader: 'svg-sprite',
@@ -80,7 +80,7 @@ module.exports = {
     resolve: {
         modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
         extensions: ['', '.web.js', '.js', '.jsx', '.css', '.less', '.scss', '.json'], //后缀名自动补全
-        root: [path.resolve('src'),  __dirname]
+        root: [path.resolve('src'), __dirname]
 
     },
     babel: {

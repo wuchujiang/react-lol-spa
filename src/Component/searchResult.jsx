@@ -5,12 +5,16 @@ import { connect } from 'react-redux';
 import { is, fromJS} from 'immutable';
 import {Tool} from '../Config/Tool';
 import {Header,template, Tartab} from './common/mixin';
-import { Button, Icon } from 'antd-mobile';
+import { Button, Icon, Result, Toast } from 'antd-mobile';
 import _ from 'lodash';
 
 class Main extends Component {
     constructor() {
         super();
+        this.state = {
+            searchResult: [],
+            areaData: []
+        }
        
     }
 
@@ -18,11 +22,78 @@ class Main extends Component {
        
     }
     componentDidMount() {
-        
+        this.getAreaData().then((data) => {
+            
+            return this.getSearchResult(data);
+        }).catch(err => {
+            Toast.hide();
+            Toast.fail(err, 2);
+        })
     }
+        
 
     changeHandle(e) {
        
+    }
+
+    getSearchResult(area) {
+        return new Promise((resolve, reject) => {
+            this.props.getData(`http://lolapi.games-cube.com/UserArea?keyword=${this.props.location.query.keyword}`, null, res => {
+                if(res.code == 0){
+                    let searchData = res.data;
+                    if (searchData && searchData.length > 0) {
+                        //根据id筛选出对应大区的玩家
+                        let id = this.props.actions.areaCheck.id;
+                        let results = [];
+                        if (id == 0) {
+                            //筛选出所有的玩家;
+                            results = searchData;
+                        } else {
+                            for (let i = 0; i < searchData.length; i++) {
+                                if (id == searchData[i].area_id) {
+                                    results.push(searchData[i]);
+                                    break;
+                                }
+                            }
+                        }
+                        console.log(results);
+                        
+                        this.setState({
+                            searchResult: results
+                        })
+                    }
+                }else{
+                    reject('系统异常')
+                }
+            }); 
+        })
+    }
+
+    getAreaData() {
+        return new Promise((resolve, reject) => {
+            this.props.getData('http://lolapi.games-cube.com/Area', null, res => {
+                if(res.code == 0){
+                    this.setState({
+                        areaData: res.data
+                    })
+                    resolve("");
+                }else{
+                    reject('系统异常')
+                }
+            });
+        })
+    }
+
+    getUserArea(id) {
+        let data = this.state.areaData;
+        let area = "";
+        for (let i = 0; i < data.length; i++) {
+            if (id == data[i].id) {
+                area = data[i].name;
+                break;
+            }
+        }
+        return area;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -30,7 +101,6 @@ class Main extends Component {
     }
     
     componentWillUpdate(nextProps,nextState){
-        console.log(121)
         if (this.props !== nextProps) {
             let {data} = nextProps.state;
             console.log(data);
@@ -38,9 +108,56 @@ class Main extends Component {
     }
    
     render() {
+        let searchResult = this.state.searchResult;
+        searchResult.sort((a, b) => {
+            return a.area_id - b.area_id;
+        });
         return (
             <section className="content">
                 <Header title="搜索结果"/>
+                <div className="search-result">
+                {searchResult.length >= 0
+                    ? searchResult.map((k, i) => {
+                        return (
+                            <Link
+                                key={i}
+                                to={{
+                                pathname: `/hero`,
+                                query: {
+                                    level: k.level,
+                                    qquin: k.qquin,
+                                    vaid: k.area_id,
+                                    name: k.name,
+                                    icon: k.icon_id,
+                                    area: this.getUserArea(k.area_id)
+                                }
+                            }}>
+                                <section className="search-result-list">
+                                    <div className="search-result-l">
+                                        <img
+                                            src={`http://cdn.tgp.qq.com/lol/images/resources/usericon/${k.icon_id}.png`}
+                                            alt=""/>
+                                    </div>
+                                    <div className="search-result-r">
+                                        <h5>{k.name}</h5>
+                                        <p>{this.getUserArea(k.area_id)}
+                                            <span>等级{k.level}</span>
+                                        </p>
+                                    </div>
+                                    <Icon type='right'/>
+                                </section>
+                            </Link>
+                        )
+                    })
+                    : <Result
+                        img={< img src = {
+                        require('src/Style/svg/fail.svg')
+                    }
+                    className = "icon" />}
+                        title="没有找到相关数据"
+                        message="请重新输入正确的英雄名称"/>
+                }
+            </div>
             </section>
         )
     }
@@ -53,5 +170,5 @@ class Main extends Component {
 export default template({
     id: 'searchResult',  //应用关联使用的redux
     component: Main,//接收数据的组件入口
-    url: 'http://lolapi.games-cube.com/Area'
+    url: ''
 });

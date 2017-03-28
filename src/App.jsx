@@ -19,9 +19,7 @@ import './Style/app.scss';
 import './Style/search.scss';
 import './Style/public.scss';
 import './Style/areaList.scss';
-
-
-
+import './Style/searchResult.scss';
 
 store.subscribe(() => { //监听state变化
     //console.log(store.getState())

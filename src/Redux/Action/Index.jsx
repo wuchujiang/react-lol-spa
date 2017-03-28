@@ -14,7 +14,8 @@ import {
     GET_DATA_SUCCESS,
     TEST_DISPATCH,
     TESTDATA,
-    AREACHECK
+    AREACHECK,
+    AREALIST
 } from '../types';
 
 //开始获取数据
@@ -85,7 +86,7 @@ export const getData = (path, postData, success, name) => {
     let url = target + path + Tool.paramType(postData);
     return dispatch => {
         dispatch(getDataStart(postData))
-        return fetch(url, {
+        return fetch(path, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -109,9 +110,19 @@ export const testDatass = (data = 1) => {
     return {type: TESTDATA, data}
 }
 
+
+//点击选中大区数据
 export const areaCheck = (data = {}) => {
     return {
         type: AREACHECK,
+        data
+    }
+}
+
+//所有大区数据
+export const areaList = (data = {}) => {
+    return {
+        type: AREALIST,
         data
     }
 }
