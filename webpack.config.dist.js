@@ -48,6 +48,10 @@ module.exports = {
             exclude: /^node_modules$/,
             loader: ExtractTextPlugin.extract('style', ['css', 'autoprefixer', 'sass'])
         }, {
+            test: /\.(svg)$/i,
+            loader: 'svg-sprite',
+            include: svgDirs // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
+        }, {
             test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
             exclude: /^node_modules$/,
             loader: 'file-loader?name=[name].[ext]'
