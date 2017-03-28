@@ -18,7 +18,7 @@ class Main extends Component {
        
     }
     componentDidMount() {
-   
+        
     }
 
     changeHandle(e) {
