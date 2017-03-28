@@ -62,6 +62,12 @@ const areaList = (location, cb) => {
     },'areaList')
 }
 
+const searchResult = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/searchResult').default)
+    },'searchResult')
+}
+
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
@@ -75,7 +81,7 @@ const RouteConfig = (
             <Route path="applyRecord" getComponent={applyRecord} /> //提现记录
             <Route path="search" getComponent={search} /> //页面搜索
             <Route path="areaList" getComponent={areaList} /> //选择大区
-            
+            <Route path="searchResult" getComponent={searchResult} /> //选择大区
             <Redirect from='*' to='/'  />
         </Route>
     </Router>

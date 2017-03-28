@@ -34,7 +34,10 @@ export const fetchPosts = (path, postData) => {
         dispatch(requestPosts(postData));
         return fetch(url, {
             mode: 'cors',
-            "Content-Type": "application/json"
+            headers: {
+                'Content-Type': 'application/json',
+                'DAIWAN-API-TOKEN': token.user
+            }
         }).then(response => {
             if (response.ok) {
                 response
@@ -112,3 +115,4 @@ export const areaCheck = (data = {}) => {
         data
     }
 }
+
