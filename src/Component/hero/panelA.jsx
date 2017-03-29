@@ -51,7 +51,7 @@ export default class panelA extends Component{
             }
         }, 'battleSummaryInfo');
 
-        this.props.getData(`http://lolapi.games-cube.com/getUserHotInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
+        this.props.getData(`http://lolapi.games-cube.com/UserHotInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
             if(res.code == 0){
                 this.setState({
                     getUserHotInfo: res
