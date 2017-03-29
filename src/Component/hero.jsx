@@ -60,7 +60,7 @@ class Main extends Component {
                         <li className={className({active: index === 1})} onClick={() => {this.handleChangeIndex(1)}}>能力</li>
                     </ul>
                 </nav>
-                <SwipeableViews animateHeight className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
+                <SwipeableViews  className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
                     <PanelA {...this.props} />
                     <PanelB />
                 </SwipeableViews>

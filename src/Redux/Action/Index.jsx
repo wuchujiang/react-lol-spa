@@ -17,7 +17,8 @@ import {
     AREACHECK,
     AREALIST,
     SEARCHVALUE,
-    SEARCHCLICK
+    SEARCHCLICK,
+    GAMEFLAG
 } from '../types';
 
 //开始获取数据
@@ -141,6 +142,14 @@ export const searchValue = (data = {}) => {
 export const searchClick = (data = {}) => {
     return {
         type: SEARCHCLICK,
+        data
+    }
+}
+
+//点击游戏记录
+export const gameFlag = (data = {}) => {
+    return {
+        type: GAMEFLAG,
         data
     }
 }

@@ -1,7 +1,13 @@
-a{
+@import './reset.scss';
+a {
     color: inherit;
 }
-.am-navbar{
+
+p {
+    font-size: 26px;
+}
+
+.am-navbar {
     position: fixed;
     width: 100%;
     height: 90px;
@@ -10,7 +16,7 @@ a{
     z-index: 19901017;
 }
 
-.nav-space{
+.nav-space {
     width: 100%;
     height: 90px;
 }
