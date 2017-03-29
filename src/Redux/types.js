@@ -15,3 +15,5 @@ export const TEST_DISPATCH = 'TEST_DISPATCH';
 export const TESTDATA = 'TESTDATA';
 export const AREACHECK = 'AREACHECK';
 export const AREALIST = 'AREALIST';
+export const SEARCHVALUE = 'SEARCHVALUE';
+export const SEARCHCLICK = 'SEARCHCLICK';

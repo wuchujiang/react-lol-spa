@@ -68,6 +68,18 @@ const searchResult = (location, cb) => {
     },'searchResult')
 }
 
+const hero = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/hero').default)
+    },'hero')
+}
+
+const ability = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/ability').default)
+    },'ability')
+}
+
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
@@ -82,6 +94,8 @@ const RouteConfig = (
             <Route path="search" getComponent={search} /> //页面搜索
             <Route path="areaList" getComponent={areaList} /> //选择大区
             <Route path="searchResult" getComponent={searchResult} /> //选择大区
+            <Route path="hero" getComponent={hero} />
+            <Route path="ability" getComponent={ability} />
             <Redirect from='*' to='/'  />
         </Route>
     </Router>

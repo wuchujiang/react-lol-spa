@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin'); //生成html
 var pxtorem = require('postcss-pxtorem');
 var svgDirs = [
     require.resolve('antd-mobile').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
-    // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
+    path.resolve(__dirname, 'src/Style/svg'),  // 2. 自己私人的 svg 存放目录
 ];
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src'); //__dirname 中的src目录，以此类推

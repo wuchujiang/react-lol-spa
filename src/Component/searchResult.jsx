@@ -13,7 +13,8 @@ class Main extends Component {
         super();
         this.state = {
             searchResult: [],
-            areaData: []
+            areaData: [],
+            requestState: false
         }
        
     }
@@ -59,7 +60,8 @@ class Main extends Component {
                         console.log(results);
                         
                         this.setState({
-                            searchResult: results
+                            searchResult: results,
+                            requestState: true
                         })
                     }
                 }else{
@@ -106,9 +108,14 @@ class Main extends Component {
             console.log(data);
         }
     }
+
+    clickHandle(item, i) {
+        let temp = _.assign(item, i)
+        this.props.searchClick(temp);
+    }
    
     render() {
-        let searchResult = this.state.searchResult;
+        let {searchResult, requestState} = this.state;
         searchResult.sort((a, b) => {
             return a.area_id - b.area_id;
         });
@@ -116,21 +123,14 @@ class Main extends Component {
             <section className="content">
                 <Header title="搜索结果"/>
                 <div className="search-result">
-                {searchResult.length >= 0
+                {searchResult.length > 0
                     ? searchResult.map((k, i) => {
                         return (
+                            <div key={i} onClick={e => {this.clickHandle(k, {area: this.getUserArea(k.area_id)})}}>
                             <Link
-                                key={i}
+                                
                                 to={{
-                                pathname: `/hero`,
-                                query: {
-                                    level: k.level,
-                                    qquin: k.qquin,
-                                    vaid: k.area_id,
-                                    name: k.name,
-                                    icon: k.icon_id,
-                                    area: this.getUserArea(k.area_id)
-                                }
+                                pathname: `/hero`
                             }}>
                                 <section className="search-result-list">
                                     <div className="search-result-l">
@@ -147,15 +147,16 @@ class Main extends Component {
                                     <Icon type='right'/>
                                 </section>
                             </Link>
+                            </div>
                         )
                     })
-                    : <Result
+                    : requestState ? <Result
                         img={< img src = {
                         require('src/Style/svg/fail.svg')
                     }
                     className = "icon" />}
                         title="没有找到相关数据"
-                        message="请重新输入正确的英雄名称"/>
+                        message="请重新输入正确的英雄名称"/> : ""
                 }
             </div>
             </section>

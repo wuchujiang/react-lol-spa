@@ -97,8 +97,7 @@ module.exports = {
     },
     babel: {
         plugins: [
-            ['import', { libraryName: 'antd-mobile', style: 'css' }]
-        ]
+            ['import', { libraryName: 'antd-mobile', style: 'css' }]        ]
     },
     postcss: [
         pxtorem({

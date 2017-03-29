@@ -11,25 +11,30 @@ import _ from 'lodash';
 class Main extends Component {
     constructor() {
         super();
+        this.state = {
+            areaList: []
+        }
     }
 
     componentWillMount() {
-       
+        this.setState({
+           areaList: this.props.requestData.areaList ? this.props.requestData.areaList.data : []
+       })
     }
     componentDidMount() {
-        let {areaList} = this.props.actions.areaList;
-        let _this = this;
-        if(_.isEmpty(areaList)){
+        console.log(this.state.areaList);
+        if(_.isEmpty(this.state.areaList)){
             Toast.loading('加载中', 0);
             this.props.getData('http://lolapi.games-cube.com/Area', null, res => {
                 Toast.hide();
-                if(res.code == 0){
-                    console.log(this.props.areaList);
-                    //_this.props.areaList(res.data);
+                if (res.code == 0) {
+                    this.setState({
+                        areaList: res.data
+                    })
                 }else{
                     Toast.alert('系统异常');
                 }
-            })
+            }, 'areaList')
         }
     }
 
@@ -49,9 +54,8 @@ class Main extends Component {
     }
    
     render() {
-        let {areaList} = this.props.actions.areaList;
+        let areaList = this.state.areaList;
         let areaCheck = this.props.actions.areaCheck;
-        console.log(areaList);
         return (
             <section>
                 <Header title="选择大区" />

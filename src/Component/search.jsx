@@ -11,9 +11,6 @@ import _ from 'lodash';
 class Main extends Component {
     constructor() {
         super();
-        this.state = {
-            searchValue: ""
-        }
     }
 
     componentWillMount() {
@@ -24,9 +21,7 @@ class Main extends Component {
     }
 
     changeHandle(e) {
-        this.setState({
-            searchValue: e.target.value
-        })
+        this.props.searchValue(e.target.value);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -41,14 +36,13 @@ class Main extends Component {
     }
    
     render() {
-        let {searchValue} = this.state;
         let areaCheck = this.props.actions.areaCheck;
         return (
             <section className="content">
                 <Header title="搜索"/>
                 <section className="search-page">
                     <div className="input-info">
-                        <input value={searchValue} onChange={e => {this.changeHandle(e)}} placeholder="请输入召唤师名称" />
+                        <input value={this.props.actions.value} onChange={e => {this.changeHandle(e)}} placeholder="请输入召唤师名称" />
                     </div>
                     <div onClick={e=>{}} className="input-info">
                         <Link to="/areaList">
@@ -59,12 +53,11 @@ class Main extends Component {
                     <Link to={{
                                 pathname: `/searchResult`,
                                 query: {
-                                    keyword: this.state.searchValue
+                                    keyword: this.props.actions.value
                                 }
                             }}><Button className="btn btn-complete" type="primary">搜索</Button></Link>
                 </section>
             </section>
-            
         )
     }
     

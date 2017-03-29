@@ -15,7 +15,9 @@ import {
     TEST_DISPATCH,
     TESTDATA,
     AREACHECK,
-    AREALIST
+    AREALIST,
+    SEARCHVALUE,
+    SEARCHCLICK
 } from '../types';
 
 //开始获取数据
@@ -126,4 +128,21 @@ export const areaList = (data = {}) => {
         data
     }
 }
+
+//搜索value
+export const searchValue = (data = {}) => {
+    return {
+        type: SEARCHVALUE,
+        data
+    }
+}
+
+//点击搜索结果时，保存所选信息；
+export const searchClick = (data = {}) => {
+    return {
+        type: SEARCHCLICK,
+        data
+    }
+}
+
 

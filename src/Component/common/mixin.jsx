@@ -40,7 +40,7 @@ export class Header extends Component {  //头部标题
         }*/
         return (
             <div className="nav-space">
-                <NavBar leftContent={leftContent} mode="dark" onLeftClick={() => console.log('onLeftClick')}
+                <NavBar leftContent={leftContent} mode="dark" onLeftClick={() => window.history.back()}
                 rightContent={[
                     <Icon key="0" type="search" style={{ marginRight: '0.32rem' }} />,
                     <Icon key="1" type="ellipsis" />,
