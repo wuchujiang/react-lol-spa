@@ -4,7 +4,7 @@ import {RECORD_STATE, SAVE_PRODUCT_LIST, NEW_PRODUCT_DATA} from '../types'
 import {DELETE_ITEM} from '../types'
 import {GET_DATA_START , GET_DATA_SUCCESS, TEST_DISPATCH, TESTDATA} from '../types'
 
-import {AREACHECK, AREALIST, SEARCHVALUE, SEARCHCLICK} from '../types';
+import {AREACHECK, AREALIST, SEARCHVALUE, SEARCHCLICK, GAMEFLAG} from '../types';
 
 //const initialState = Immutable.fromJS({}) //=Immutable.Map({})
 
@@ -107,10 +107,18 @@ export const value = (state = 'w何去何从', action = {}) => {
     }
 }
 
-//分发所有的value
 export const searchClick = (state = {}, action = {}) => {
     switch (action.type) {
         case SEARCHCLICK:
+            return action.data
+        default:
+            return state;
+    }
+}
+
+export const gameFlag = (state = {}, action = {}) => {
+    switch (action.type) {
+        case GAMEFLAG:
             return action.data
         default:
             return state;

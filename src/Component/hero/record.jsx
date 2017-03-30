@@ -9,8 +9,7 @@ let pageIndex = 1;
 export default class Record extends Component {
     constructor(props) {
         super(props);
-        let getCombatList = this.props.requestData.getCombatList;
-        let combatList = getCombatList.data && getCombatList.data.length > 0 ? getCombatList.data[0] : {};
+        let combatList = this.props.combatList;
         let combat = combatList.battle_list;
         this.state = {
             scrollState: 0,  // 1可以加载 2 加载中 3加载完成 4 没有内容了；
@@ -45,7 +44,6 @@ export default class Record extends Component {
                 vaid = this.props.actions.searchClick.area_id,
                 p = pageIndex++;
             this.props.getData(`http://lolapi.games-cube.com/CombatList?qquin=${qquin}&vaid=${vaid}&p=${p}`, null, (data) => {
-                console.log(data.code)
                 if (data.code == 0 && data.data[0].result == 0 && data.data[0].battle_list.length > 0) {
                     let battle_list = data.data[0].battle_list;
                     let initData = this.state.initData;
@@ -64,6 +62,14 @@ export default class Record extends Component {
         }
     }
 
+    clickHandle(item) {
+        this.props.gameFlag({
+            qquin: this.props.actions.searchClick.qquin,
+            vaid: this.props.actions.searchClick.area_id,
+            game_id: item.game_id
+        });
+    }
+
 
     render() {
         //let userInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : {};
@@ -73,7 +79,8 @@ export default class Record extends Component {
                 <PullView onScrollToBottom={() => {this.scrollBottom()}}>
                     {this.state.initData.map((k, i) => {
                         return (
-                            <Link  key={i}>
+                            <div  key={i} onClick={(e) => {this.clickHandle(k)}}>
+                            <Link to="gameDetail" >
                                 <div className={className({win: k.win == 1, item: true})}>
                                     <div className="item-one">
                                             <img src={`http://cdn.tgp.qq.com/pallas/images/champions_id/${k.champion_id}.png`} />
@@ -91,7 +98,8 @@ export default class Record extends Component {
                                     </div>
                                     <Icon type="right" />
                                 </div>
-                        </Link>     
+                        </Link>  
+                        </div>   
                     ) 
                 })}
                 </PullView>

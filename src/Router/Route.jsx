@@ -80,6 +80,12 @@ const ability = (location, cb) => {
     },'ability')
 }
 
+const gameDetail = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/gameDetail').default)
+    },'gameDetail')
+}
+
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
@@ -96,6 +102,7 @@ const RouteConfig = (
             <Route path="searchResult" getComponent={searchResult} /> //选择大区
             <Route path="hero" getComponent={hero} />
             <Route path="ability" getComponent={ability} />
+            <Route path="gameDetail" getComponent={gameDetail} />
             <Redirect from='*' to='/'  />
         </Route>
     </Router>

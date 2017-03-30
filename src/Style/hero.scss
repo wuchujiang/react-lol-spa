@@ -15,7 +15,6 @@
     }
 }
 
-@import './public.scss';
 .record {
     background-color: #f5f5f5;
 }
@@ -451,5 +450,23 @@
         .item-three {
             color: green;
         }
+    }
+}
+
+.scroll-loading {
+    height: 80px;
+    background: #ddd;
+    color: #666;
+    line-height: 80px;
+    text-align: center;
+    position: relative;
+    svg {
+        position: absolute;
+        left: 240px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 36px;
+        color: orange;
+        padding-right: 10px;
     }
 }

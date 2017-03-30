@@ -17,3 +17,4 @@ export const AREACHECK = 'AREACHECK';
 export const AREALIST = 'AREALIST';
 export const SEARCHVALUE = 'SEARCHVALUE';
 export const SEARCHCLICK = 'SEARCHCLICK';
+export const GAMEFLAG = 'GAMEFLAG';

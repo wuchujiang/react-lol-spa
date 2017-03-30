@@ -17,7 +17,6 @@ export default class panelA extends Component{
     componentDidMount() {
         let {qquin} = this.props.actions.searchClick;
         let vaid =  this.props.actions.searchClick.area_id;
-        Toast.loading('加载中', 0);
         this.props.getData(`http://lolapi.games-cube.com/CombatList?qquin=${qquin}&vaid=${vaid}`, null, res => {
             if(res.code == 0){
                 this.setState({
@@ -151,9 +150,8 @@ export default class panelA extends Component{
     }
     
     render() {
-        console.log(this.state);
         let {getUserHotInfo, getUserData, getCombatList} = this.state;
-        let {qquin, vaid, name, area, level} = this.props.searchClick;
+        let {qquin, icon_id, name, area, level} = this.props.actions.searchClick;
         let rankData = getUserData.data && getUserData.data.length > 0 ? getUserData.data : [];
         let userHotInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : {};
         let winNumber = this.getWinNumber() || {};
@@ -163,7 +161,7 @@ export default class panelA extends Component{
                 <div className="banner">
                     <div className="record-l">
                         <div className="user-info-l">
-                            <img src={`http://cdn.tgp.qq.com/lol/images/resources/usericon/${vaid}.png`} alt=""/>
+                            <img src={`http://cdn.tgp.qq.com/lol/images/resources/usericon/${icon_id}.png`} alt=""/>
                             <span className="level">{level}</span>
                         </div>
                         <div className="user-info-r">
@@ -225,7 +223,7 @@ export default class panelA extends Component{
                                 </div>
                                 <p>仅记录半年且500场以内的战绩</p>
                             </div>
-                            : <Record {...this.props} />
+                            : <Record {...this.props} combatList={combatList}  />
                     }
                 </section>    
                    
