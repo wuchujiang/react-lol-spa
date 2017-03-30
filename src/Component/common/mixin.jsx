@@ -79,8 +79,8 @@ export class Tartab extends Component{
                 <TabBar.Item
                     icon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     selectedIcon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
-                    title="朋友"
-                    key="朋友"
+                    title={<Link to='/summoner'>英雄</Link>}
+                    key="英雄"
                    >
                 </TabBar.Item>
                 <TabBar.Item

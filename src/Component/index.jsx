@@ -6,7 +6,7 @@ import { is, fromJS} from 'immutable';
 import {Tool} from '../Config/Tool';
 import {Header,template, Tartab} from './common/mixin';
 import { Button, Icon } from 'antd-mobile';
-
+import _ from 'lodash';
 class Main extends Component {
     constructor() {
         super();
@@ -16,7 +16,6 @@ class Main extends Component {
        
     }
     componentDidMount() {
-   
     }
 
     shouldComponentUpdate(nextProps, nextState) {

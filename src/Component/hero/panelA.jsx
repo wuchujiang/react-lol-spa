@@ -16,7 +16,8 @@ export default class panelA extends Component{
     }
     componentDidMount() {
         let {qquin} = this.props.actions.searchClick;
-        let vaid =  this.props.actions.searchClick.area_id;
+        let vaid = this.props.actions.searchClick.area_id;
+        Toast.loading('加载中', 0);
         this.props.getData(`http://lolapi.games-cube.com/CombatList?qquin=${qquin}&vaid=${vaid}`, null, res => {
             if(res.code == 0){
                 this.setState({
@@ -60,6 +61,10 @@ export default class panelA extends Component{
                 Toast.fail('系统异常')
             }
         }, 'getUserHotInfo');
+    }
+
+    componentWillReceiveProps() { 
+       
     }
 
     pentaKillsState() {
@@ -150,12 +155,16 @@ export default class panelA extends Component{
     }
     
     render() {
-        let {getUserHotInfo, getUserData, getCombatList} = this.state;
+
+        let {getUserHotInfo, getUserData, getCombatList, battleSummaryInfo} = this.state;
         let {qquin, icon_id, name, area, level} = this.props.actions.searchClick;
         let rankData = getUserData.data && getUserData.data.length > 0 ? getUserData.data : [];
         let userHotInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : {};
         let winNumber = this.getWinNumber() || {};
         let combatList = getCombatList.data && getCombatList.data.length > 0 ? getCombatList.data[0] : {};
+        if (!_.isEmpty(getUserData) && !_.isEmpty(getCombatList) && !_.isEmpty(getUserHotInfo) && !_.isEmpty(battleSummaryInfo)){
+            Toast.hide();
+        }
         return (
             <div className="record">
                 <div className="banner">
@@ -170,7 +179,7 @@ export default class panelA extends Component{
                         </div>
                     </div>
                     <div className="record-r">
-                        <span><Icon type="like" /></span>
+                        <span><img src={require('src/Style/svg/like.svg')} /></span>
                         <p>{userHotInfo.power_value}</p>
                     </div>
                 </div>
@@ -216,14 +225,14 @@ export default class panelA extends Component{
                 <section>
                     <h4>我的战绩</h4>    
                     {
-                        combatList.result != 0 || combatList.total_num <= 0 ?
+                        !_.isEmpty(getCombatList) ? combatList.result != 0 || combatList.total_num <= 0 ?
                             <div className="fail">    
                                 <div className="fail-img">
                                     <img src={require('src/Style/img/ali_cry_image.png')} alt=""/>
                                 </div>
                                 <p>仅记录半年且500场以内的战绩</p>
                             </div>
-                            : <Record {...this.props} combatList={combatList}  />
+                            : <Record {...this.props} combatList={combatList}  /> : ""
                     }
                 </section>    
                    

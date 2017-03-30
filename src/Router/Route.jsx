@@ -14,41 +14,6 @@ class Roots extends Component {
 const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
 
 
-const chooseProducts = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('../Component/chooseProducts').default)
-    },'chooseProducts')
-}
-
-const helpCenter = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('../Component/helpCenter').default)
-    },'helpCenter')
-}
-
-const saleRecord = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('../Component/saleRecord').default)
-    },'saleRecord')
-}
-
-const allDeposit = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('../Component/allDeposit').default)
-    },'allDeposit')
-}
-
-const applyRecord = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('../Component/applyRecord').default)
-    },'applyRecord')
-}
-
-const applyDeposit = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('../Component/applyDeposit').default)
-    },'applyDeposit')
-}
 
 const search = (location, cb) => {
     require.ensure([], require => {
@@ -86,23 +51,31 @@ const gameDetail = (location, cb) => {
     },'gameDetail')
 }
 
+const summoner = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/summoner').default)
+    },'summoner')
+}
+
+const heroContent = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/heroContent').default)
+    },'heroContent')
+}
+
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
             <IndexRoute component={index} />//首页
             <Route path="index" component={index} />
-            <Route path="helpCenter" getComponent={helpCenter} />//帮助中心
-            <Route path="saleRecord" getComponent={saleRecord} />//销售记录
-            <Route path="chooseProducts" getComponent={chooseProducts} />//选择商品
-            <Route path="allDeposit" getComponent={allDeposit} />//余额
-            <Route path="applyDeposit" getComponent={applyDeposit} />//申请提现
-            <Route path="applyRecord" getComponent={applyRecord} /> //提现记录
             <Route path="search" getComponent={search} /> //页面搜索
             <Route path="areaList" getComponent={areaList} /> //选择大区
             <Route path="searchResult" getComponent={searchResult} /> //选择大区
             <Route path="hero" getComponent={hero} />
             <Route path="ability" getComponent={ability} />
             <Route path="gameDetail" getComponent={gameDetail} />
+            <Route path="summoner" getComponent={summoner} />
+            <Route path="heroContent" getComponent={heroContent} />
             <Redirect from='*' to='/'  />
         </Route>
     </Router>

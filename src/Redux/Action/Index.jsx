@@ -1,24 +1,19 @@
 import fetch from 'isomorphic-fetch'
+import {Toast} from 'antd-mobile';
 import {target} from '../../Config/Config'
 import {Tool} from '../../Config/Tool'
 import {token} from 'src/Config/staticData';
 import {
-    SET_STATE,
-    RECORD_STATE,
-    SAVE_PRODUCT_LIST,
-    NEW_PRODUCT_DATA,
-    DELETE_ITEM,
     REQUEST_POSTS,
     RECEIVE_POSTS,
     GET_DATA_START,
     GET_DATA_SUCCESS,
-    TEST_DISPATCH,
-    TESTDATA,
     AREACHECK,
     AREALIST,
     SEARCHVALUE,
     SEARCHCLICK,
-    GAMEFLAG
+    GAMEFLAG,
+    SUMMONERCLICK
 } from '../types';
 
 //开始获取数据
@@ -54,26 +49,6 @@ export const fetchPosts = (path, postData) => {
     }
 }
 
-//记录单个商品列表状态
-export const recordState = (id, chooseState, num, index) => {
-    return {type: RECORD_STATE, id, chooseState, num, index}
-}
-
-//将商品列表保存在store中，组件再次渲染时调用
-export const saveProductlist = productList => {
-    return {type: SAVE_PRODUCT_LIST, productList}
-}
-
-//保存商品列表也获取到的数据
-export const newProductData = productData => {
-    return {type: NEW_PRODUCT_DATA, productData}
-}
-
-//销售列表页删除单个item
-export const deleteItem = index => {
-    return {type: DELETE_ITEM, index}
-}
-
 //开始获取数据
 const getDataStart = path => {
     return {type: GET_DATA_START, path}
@@ -95,63 +70,70 @@ export const getData = (path, postData, success, name) => {
                 'Content-Type': 'application/json',
                 'DAIWAN-API-TOKEN': token.user
             },
+                timeout: 8000,
                 mode: 'cors'
             })
             .then(response => response.json())
             .then(json => dispatch(getDataSuccess(path, json, success, name)))
-            .catch(error => console.log(error))
+            .catch(error => {
+                Toast.hide();
+                Toast.fail('网络连接错误！')
+                console.log(error);
+            })
     }
 }
 
-//记录单个商品列表状态
-export const testAction = (data) => {
-    return {type: TEST_DISPATCH, data}
+//手动调用获取数据的aciton
+export const getVideoData = (path, postData, success, name) => {
+    let url = target + path + Tool.paramType(postData);
+    return dispatch => {
+        dispatch(getDataStart(postData))
+        return fetch(path, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'DAIWAN-API-TOKEN': token.video
+            },
+                timeout: 8000,
+                mode: 'cors'
+            })
+            .then(response => response.json())
+            .then(json => dispatch(getDataSuccess(path, json, success, name)))
+            .catch(error => {
+                Toast.hide();
+                Toast.fail('网络连接错误！')
+                console.log(error);
+            })
+    }
 }
-
-export const testDatass = (data = 1) => {
-    console.log(data);
-    return {type: TESTDATA, data}
-}
-
 
 //点击选中大区数据
 export const areaCheck = (data = {}) => {
-    return {
-        type: AREACHECK,
-        data
-    }
+    return {type: AREACHECK, data}
 }
 
 //所有大区数据
 export const areaList = (data = {}) => {
-    return {
-        type: AREALIST,
-        data
-    }
+    return {type: AREALIST, data}
 }
 
 //搜索value
 export const searchValue = (data = {}) => {
-    return {
-        type: SEARCHVALUE,
-        data
-    }
+    return {type: SEARCHVALUE, data}
 }
 
 //点击搜索结果时，保存所选信息；
 export const searchClick = (data = {}) => {
-    return {
-        type: SEARCHCLICK,
-        data
-    }
+    return {type: SEARCHCLICK, data}
 }
 
 //点击游戏记录
 export const gameFlag = (data = {}) => {
-    return {
-        type: GAMEFLAG,
-        data
-    }
+    return {type: GAMEFLAG, data}
 }
 
+//点击英雄
+export const summonerClick = (data = {}) => {
+    return {type: SUMMONERCLICK, data}
+}
 

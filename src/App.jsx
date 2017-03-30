@@ -5,15 +5,6 @@ import route from './Router/Route'; //路由配置
 import store from './Redux/Store/Store';
 import './Config/Config.js';//引入默认配置
 
-import './Style/common.scss';
-import './Style/head.scss';
-import './Style/index.scss';
-import './Style/chooseProducts.scss';
-import './Style/helpCenter.less';
-import './Style/saleRecord.less';
-import './Style/allDeposit.less';
-import './Style/applyDeposit.less';
-import './Style/applyRecord.less';
 
 import './Style/app.scss';
 import './Style/search.scss';
@@ -22,6 +13,10 @@ import './Style/areaList.scss';
 import './Style/searchResult.scss';
 import './Style/hero.scss';
 import './Style/gameDetail.scss';
+import './Style/summoner.scss';
+import './Style/heroContent.scss';
+
+
 
 
 store.subscribe(() => { //监听state变化

@@ -23,8 +23,8 @@ class Main extends Component {
        
     }
     componentDidMount() {
+        Toast.loading("加载中", 0);
         this.getAreaData().then((data) => {
-            
             return this.getSearchResult(data);
         }).catch(err => {
             Toast.hide();
@@ -40,6 +40,7 @@ class Main extends Component {
     getSearchResult(area) {
         return new Promise((resolve, reject) => {
             this.props.getData(`http://lolapi.games-cube.com/UserArea?keyword=${this.props.location.query.keyword}`, null, res => {
+                Toast.hide();
                 if(res.code == 0){
                     let searchData = res.data;
                     if (searchData && searchData.length > 0) {
