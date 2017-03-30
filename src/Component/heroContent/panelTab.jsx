@@ -39,7 +39,7 @@ export default class PanelTab extends Component {
                         <li className={className({active: index === 2})} onClick={() => {this.handleChangeIndex(2)}}>视频</li>
                     </ul>
                 </nav>
-                <SwipeableViews className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
+                <SwipeableViews animateHeight ignoreNativeScroll className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
                     <PanelA getHeroContent={this.props.getHeroContent}/>
                     <PanelB getHeroContent={this.props.getHeroContent}/>
                     <div><PanelC {...this.props}/></div>
