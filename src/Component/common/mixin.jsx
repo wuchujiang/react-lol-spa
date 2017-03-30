@@ -72,8 +72,8 @@ export class Tartab extends Component{
                 <TabBar.Item
                     icon={< Icon type = "koubei-o" size = "md" />}
                     selectedIcon={< Icon type = "koubei" size = "md" />}
-                    title="口碑"
-                    key="口碑"
+                    title="视频"
+                    key="视频"
                     data-seed="logId1">
                 </TabBar.Item>
                 <TabBar.Item

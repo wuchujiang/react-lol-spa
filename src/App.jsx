@@ -15,8 +15,7 @@ import './Style/hero.scss';
 import './Style/gameDetail.scss';
 import './Style/summoner.scss';
 import './Style/heroContent.scss';
-
-
+import './Style/video.scss';
 
 
 store.subscribe(() => { //监听state变化
