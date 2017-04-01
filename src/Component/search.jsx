@@ -6,7 +6,7 @@ import { is, fromJS} from 'immutable';
 import {Tool} from '../Config/Tool';
 import {Header,template, Tartab} from './common/mixin';
 import { Button, Icon } from 'antd-mobile';
-import _ from 'lodash';
+import _ from 'lodash'; 
 
 class Main extends Component {
     constructor() {
@@ -17,7 +17,7 @@ class Main extends Component {
        
     }
     componentDidMount() {
-   
+        
     }
 
     changeHandle(e) {
@@ -57,6 +57,7 @@ class Main extends Component {
                                 }
                             }}><div className="btn btn-complete am-button am-button-primary" type="primary"><span>搜索</span></div></Link>
                 </section>
+                
             </section>
         )
     }

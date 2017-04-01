@@ -1,11 +1,11 @@
 import FastClick from './fastclick.js';
 
 if ('addEventListener' in document) {
-  document.addEventListener('DOMContentLoaded', function() {
-    FastClick.attach(document.body);
-  }, false);
+  document
+    .addEventListener('DOMContentLoaded', function () {
+      FastClick.attach(document.body);
+    }, false);
 }
-
 
 const system = (() => {
   let u = navigator.userAgent;
@@ -19,8 +19,9 @@ const system = (() => {
   }
   return system
 })()
-const target = process.env.NODE_ENV !== 'production' ? '' : ''; //目标网站
-export {
-  target,
-  system
-}
+const target = process.env.NODE_ENV !== 'production'
+  ? ''
+  : ''; //目标网站
+
+
+export {target, system}

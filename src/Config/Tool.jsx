@@ -111,3 +111,16 @@ Tool.nextPage = (dom,currentPage,totalPage,callback,shouldUpdata) => { //分页
     }
 
 }
+
+//获取localStorage对象
+Tool.getLocationObj = (key) => {
+	let jsonStr = localStorage.getItem(key);
+	return JSON.parse(jsonStr);
+
+}
+
+//存储localStorage对象
+Tool.setLocationObj = (key, value) => {
+	return localStorage.setItem(key, JSON.stringify(value));
+
+}
