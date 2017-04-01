@@ -47,7 +47,7 @@ class Main extends Component {
         return (
             <section>
                 <Header title="英雄资料"/>
-                <Tartab />
+                <Tartab selected="2" />
                 <nav className="small-bar">
                     <ul>
                         <li className={className({ active: index === 0 })} onClick={() => { this.handleChangeIndex(0) } }>战绩</li>
@@ -55,16 +55,12 @@ class Main extends Component {
                         <li className={className({ active: index === 2 })} onClick={() => { this.handleChangeIndex(2) } }>全部英雄</li>
                     </ul>
                 </nav>
-                <SwipeableViews className="details" index={index} onChangeIndex={index => { this.handleChangeIndex(index) } }>
-                    <div>
+                <SwipeableViews  className="details" index={index} onChangeIndex={index => { this.handleChangeIndex(index) } }>
                        <PanelA {...this.props} />
-                    </div>
                     <div>
                        2323
                     </div>
-                    <div>
                        <PanelC {...this.props} />
-                    </div>
                 </SwipeableViews>
             </section>
         )

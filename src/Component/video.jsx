@@ -4,27 +4,54 @@ import {History, Link } from 'react-router';
 import { connect } from 'react-redux';
 import { is, fromJS} from 'immutable';
 import moment from 'moment';
+import PullView from './common/pullView';
+
 import {Header,template, Tartab} from './common/mixin';
 import { Button, Icon, Toast } from 'antd-mobile';
 import _ from 'lodash';
+moment.locale('zh-cn')
+let pageIndex = 1;
 class Main extends Component {
     constructor() {
         super();
         this.state = {
-            getNewstVideos: {}
+            scrollState: 0,  // 1可以加载 2 加载中 3加载完成 4 没有内容了；
+            initData: [],
+            loadingTip: "查看更多"
         }
     }
 
     componentWillMount() {
        
     }
+   
+
     componentDidMount() {
-        this.props.getVideoData(`http://infoapi.games-cube.com/GetNewstVideos?p=${1}`, null, (data) => {
-            Toast.hide();
+        if (this.props.requestData.video) {
             this.setState({
-                getNewstVideos: data
+                initData: this.props.requestData.video.data
             });
-        });
+        } else {
+            Toast.loading('加载中...', 0);
+            this.props.getVideoData(`http://infoapi.games-cube.com/GetNewstVideos?p=${1}`, null, (data) => {
+                Toast.hide();
+                this.setState({
+                    initData: data.data
+                });
+            }, 'video');
+        }
+        
+    }
+
+     componentDidUpdate() {
+        /*
+        **加载完成后改变scrollState的状态
+        */
+        if (this.state.scrollState == 3) {
+            this.setState({
+                scrollState: 1
+            });
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -38,38 +65,69 @@ class Main extends Component {
         }
     }
 
-    clickHandle() {
-         
+    scrollBottom() {
+        //滑动到底部时加载；
+        console.log(111)
+        if (this.state.scrollState == 0 || this.state.scrollState == 1) {
+            this.setState({
+                scrollState: 2,
+                loadingTip: '正在加载中'
+            });
+            let p = pageIndex++;
+            this.props.getVideoData(`http://infoapi.games-cube.com/GetNewstVideos?p=${p}`, null, (data) => {
+                if (data.code == 0 && data.data.length > 0) {
+                    let initData = this.state.initData;
+                    this.setState({
+                        initData: initData.concat(data.data),
+                        scrollState: 3,
+                        loadingTip: '查看更多'
+                    })
+                }else{
+                    this.setState({
+                        scrollState: 4,
+                        loadingTip: '已经到最底了!'
+                    })
+                }
+            });
+        }
     }
    
     render() {
-        let getNewstVideos = this.state.getNewstVideos
-        let newstVideos = !_.isEmpty(getNewstVideos) && getNewstVideos.data && getNewstVideos.data.length > 0 ? getNewstVideos.data : [];
+        let videos = this.state.initData;
         return (
             
             <section>
                 <Header title="视频" />
-                <ul className="video-page">
-                    {
-                        !_.isEmpty(newstVideos) && newstVideos.map((k ,i) => {
-                        return (
-                                <li key={i}>
-                                    <Link>
-                                        <div className="video-img">
-                                            <img src={k.img} alt=""/>
-                                            <div className="player-icon">
-                                                <span className="player-icon-o"></span>
-                                                <span className="player-icon-c"></span>
+                <Tartab selected="1" />
+                <PullView onScrollToBottom={() => {this.scrollBottom()}}>
+                    <ul className="video-page">
+                        {
+                            !_.isEmpty(videos) && videos.map((k ,i) => {
+                            return (
+                                    <li key={i}>
+                                        <Link>
+                                            <div className="video-img">
+                                                <img src={k.img} alt=""/>
+                                                <div className="player-icon">
+                                                    <img onLoad={e=>{console.log(232)}} src={require('src/Style/img/video_play.png')} alt=""/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <h4>{k.title}</h4>
-                                        <p>{moment(k.createdate).endOf('day').fromNow()}</p>
-                                    </Link>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
+                                            <h4>{k.title}</h4>
+                                            <p>{moment(k.createdate).endOf('day').fromNow()}</p>
+                                        </Link>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </PullView>
+                {this.state.scrollState !=0 && <div className="scroll-loading">
+                    <p>
+                        {this.state.scrollState == 2 ? <Icon type="loading" /> : ""}    
+                        {this.state.loadingTip}
+                    </p>
+                </div>}
+                <div className="bottom-space"></div>
             </section>
         )
     }

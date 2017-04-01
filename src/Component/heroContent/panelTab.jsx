@@ -42,7 +42,7 @@ export default class PanelTab extends Component {
                 <SwipeableViews animateHeight ignoreNativeScroll className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
                     <PanelA getHeroContent={this.props.getHeroContent}/>
                     <PanelB getHeroContent={this.props.getHeroContent}/>
-                    <div><PanelC {...this.props}/></div>
+                    <PanelC {...this.props}/>
                 </SwipeableViews>
             </div>
         )

@@ -40,8 +40,8 @@ export default class Skin extends Component {
                     beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
                     afterChange={index => console.log('slide to', index)}
                     >
-                    {!_.isEmpty(championDetail) && championDetail.skins.map(ii => (
-                        <img
+                    {!_.isEmpty(championDetail) && championDetail.skins.map((ii, index) => (
+                        <img key={index}
                             src={`http://cdn.tgp.qq.com/pallas/images/skins/original/${championDetail.key}-${ii.id}.jpg`}
                             
                         />

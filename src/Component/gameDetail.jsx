@@ -82,8 +82,11 @@ class Main extends Component {
                 }
             }
         }
-        console.log(temp);
         return temp
+    }
+
+    imgError(e) {
+        e.target.src = require('src/Style/img/photo_default.jpg');
     }
    
     render() {
@@ -122,7 +125,7 @@ class Main extends Component {
                                             let header = <div className="record-c-top">
                                                     <Link to={{pathname:`/heroContent/${_k.champion_id}`,query:{name:"", id: _k.champion_id}}}>
                                                         <div className="record-c-top-l">
-                                                            <img src={`http://cdn.tgp.qq.com/pallas/images/champions_id/${_k.champion_id}.png`} />
+                                                            <img onError={e => {this.imgError(e)}} src={`http://cdn.tgp.qq.com/pallas/images/champions_id/${_k.champion_id}.png`} />
                                                             {_k.qquin == qquin ? <img className="my-self" src={require('src/Style/img/desc_self.png')} /> : "" }
                                                             <p>Lv{_k.level}</p>
                                                         </div>
@@ -131,13 +134,13 @@ class Main extends Component {
                                                             <h5 className={className({'my-self' : _k.qquin == qquin})}>{_k.name}</h5>
                                                             <div className="total-mid">{`${_k.champions_killed}/${_k.num_deaths}/${_k.assists}`}</div>
                                                             <div className="equipment-img">
-                                                                {_k.item0 != 0 ? <img src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item0}.png`} /> : <span></span>}
-                                                                {_k.item1 != 0 ? <img src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item1}.png`} /> : <span></span>}
-                                                                {_k.item2 != 0 ? <img src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item2}.png`} /> : <span></span>}
-                                                                {_k.item3 != 0 ? <img src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item3}.png`} /> : <span></span>}
-                                                                {_k.item4 != 0 ? <img src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item4}.png`} /> : <span></span>}
-                                                                {_k.item5 != 0 ? <img src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item5}.png`} /> : <span></span>}
-                                                                {_k.item6 != 0 ? <img src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item6}.png`} /> : <span></span>}
+                                                                {_k.item0 != 0 ? <img onError={e => {this.imgError(e)}} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item0}.png`} /> : <span></span>}
+                                                                {_k.item1 != 0 ? <img onError={e => {this.imgError(e)}} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item1}.png`} /> : <span></span>}
+                                                                {_k.item2 != 0 ? <img onError={e => {this.imgError(e)}} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item2}.png`} /> : <span></span>}
+                                                                {_k.item3 != 0 ? <img onError={e => {this.imgError(e)}} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item3}.png`} /> : <span></span>}
+                                                                {_k.item4 != 0 ? <img onError={e => {this.imgError(e)}} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item4}.png`} /> : <span></span>}
+                                                                {_k.item5 != 0 ? <img onError={e => {this.imgError(e)}} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item5}.png`} /> : <span></span>}
+                                                                {_k.item6 != 0 ? <img onError={e => {this.imgError(e)}} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k.item6}.png`} /> : <span></span>}
                                                             </div>
                                                         </div>
                                                     </div>    

@@ -69,6 +69,13 @@ const video = (location, cb) => {
     },'video')
 }
 
+const home = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/home').default)
+    },'home')
+}
+
+
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
@@ -83,7 +90,8 @@ const RouteConfig = (
             <Route path="summoner" getComponent={summoner} />
             <Route path="video" getComponent={video} />
             <Route path="heroContent" getComponent={heroContent} />
-            <Redirect from='*' to='/'  />
+            <Route path="home" getComponent={home} />
+            <Redirect from='*' to='/' />
         </Route>
     </Router>
 );

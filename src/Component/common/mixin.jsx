@@ -42,8 +42,7 @@ export class Header extends Component {  //头部标题
             <div className="nav-space">
                 <NavBar leftContent={leftContent} mode="dark" onLeftClick={() => window.history.back()}
                 rightContent={[
-                    <Icon key="0" type="search" style={{ marginRight: '0.32rem' }} />,
-                    <Icon key="1" type="ellipsis" />,
+                    <Icon key="1" type="ellipsis" />
                 ]}
                 >{title}</NavBar>
             </div>
@@ -63,8 +62,9 @@ export class Tartab extends Component{
                 barTintColor="white"
                 >
                 <TabBar.Item
-                    title={<Link to='/app'>提现</Link>}
-                    key="生活"
+                    title={<Link to='/app'>搜索</Link>}
+                    key="搜索"
+                    selected={this.props.selected == 0}
                     icon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     selectedIcon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     data-seed="logId">
@@ -72,11 +72,13 @@ export class Tartab extends Component{
                 <TabBar.Item
                     icon={< Icon type = "koubei-o" size = "md" />}
                     selectedIcon={< Icon type = "koubei" size = "md" />}
-                    title="视频"
+                    title={<Link to='/video'>视频</Link>}
                     key="视频"
+                    selected={this.props.selected == 1}
                     data-seed="logId1">
                 </TabBar.Item>
                 <TabBar.Item
+                    selected={this.props.selected == 2}
                     icon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     selectedIcon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     title={<Link to='/summoner'>英雄</Link>}
@@ -84,13 +86,14 @@ export class Tartab extends Component{
                    >
                 </TabBar.Item>
                 <TabBar.Item
+                    selected={this.props.selected == 3}
                     icon={{
                     uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg'
                 }}
                     selectedIcon={{
                     uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg'
                 }}
-                    title="我的"
+                    title={<Link to='/home'>我的</Link>}
                     key="我的"
                    >
                 </TabBar.Item>

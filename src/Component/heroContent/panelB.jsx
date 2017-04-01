@@ -27,7 +27,7 @@ export default class PanelA extends Component{
                   return (
                       <li key={i} onClick={e=>{this.setState({skinPlay: true})}}>
                         <div>
-                            <img src={`http://cdn.tgp.qq.com/pallas/images/skins/original/${championDetail.key}-${k.id}.jpg`} alt=""/>
+                            <img  src={`http://cdn.tgp.qq.com/pallas/images/skins/original/${championDetail.key}-${k.id}.jpg`} alt=""/>
                         </div>
                         <p>{k.name}</p>
                     </li>

@@ -3,7 +3,7 @@ import className from 'classnames';
 import { game_type } from 'src/Config/staticData';
 import moment from 'moment';
 import { Link } from 'react-router';
-import PullView from './pullView';
+import PullView from '../common/pullView';
 import { Icon } from 'antd-mobile';
 let pageIndex = 1;
 export default class Record extends Component {
@@ -34,7 +34,6 @@ export default class Record extends Component {
 
     scrollBottom() {
         //滑动到底部时加载；
-        console.log(2323);
         if (this.state.scrollState == 0 || this.state.scrollState == 1) {
             this.setState({
                 scrollState: 2,

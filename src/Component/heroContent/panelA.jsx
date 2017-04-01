@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import {Accordion} from 'antd-mobile';
 import className from 'classnames';
 import { is, fromJS} from 'immutable';
@@ -10,6 +11,7 @@ export default class PanelA extends Component{
         this.state = {
             skillActive:1
         };
+        this.imgError = this.imgError.bind(this);
     }
 
     setSkillMain(championDetail) {
@@ -79,6 +81,10 @@ export default class PanelA extends Component{
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     }
 
+    imgError(e) {
+        e.target.src = require('src/Style/img/photo_default.jpg');
+    }
+
     render() {
         let championDetail = this.props.getHeroContent && this.props.getHeroContent.data && this.props.getHeroContent.data.length > 0 ? this.props.getHeroContent.data[0] : [];
         const recomondName = ['出门装','前期', '核心', '终极神装'];
@@ -91,11 +97,15 @@ export default class PanelA extends Component{
                         <ul className="skill-image">
                             {championDetail.passive && championDetail.passive.image && <li className={className({
                                 active: this.state.skillActive === 1
-                            })} onClick={e=>{this.changeSkillMain(1)}} style={{backgroundImage: `url(http://ossweb-img.qq.com/images/lol/img/passive/${championDetail.passive.image.full})`}}></li>}
+                            })} onClick={e => { this.changeSkillMain(1) } }>
+                                <img onError={e => { this.imgError(e) } } src={`http://ossweb-img.qq.com/images/lol/img/passive/${championDetail.passive.image.full}`} alt=""/>
+                            </li>}
                                 {
                                     championDetail.spells && championDetail.spells.map((k, index) => {
                                         return (
-                                            <li key={_.uniqueId()} className={className({active: this.state.skillActive === (index + 2)})} onClick={e=>{this.changeSkillMain(index + 2)}}  style={{backgroundImage: `url(http://ossweb-img.qq.com/images/lol/img/spell/${k.image.full})`}}></li>
+                                            <li key={_.uniqueId()} className={className({ active: this.state.skillActive === (index + 2) })} onClick={e => { this.changeSkillMain(index + 2) } } >
+                                                <img onError={e => { this.imgError(e) } } src={`http://ossweb-img.qq.com/images/lol/img/spell/${k.image.full}`} alt=""/>
+                                            </li>
                                         )
                                         
                                     })
@@ -121,9 +131,9 @@ export default class PanelA extends Component{
                                                 <div  className="equipment-item" key={_.uniqueId()}>
                                                     <p>{recomondName[i]}</p>
                                                     <div>
-                                                        { k.map(_k => {
+                                                        { k.map((_k, _i) => {
                                                           return (
-                                                                <img key={_.uniqueId()} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k}.png`} />
+                                                              <img onError={e => { this.imgError(e) } } key={_.uniqueId()} src={`http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/${_k}.png`} />
                                                             )                                                         
                                                        })}
                                                    </div>

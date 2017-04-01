@@ -40,11 +40,11 @@ class Main extends Component {
                 <Tartab selected="0"/>
                 <div className="app">
                     <div className="search">
-                        <img src={require('src/Style/svg/app.svg')} />
+                        <img src={require('src/Style/img/battle.png')} />
                     </div>
                     <p>添加游戏角色，查战绩，看英雄！</p>
                     <div className="btn-father">
-                        <Link to="search"><Button to="/search" onClick={() => {this.clickHandle();}} className="btn btn-search" type="primary">点击搜索</Button></Link>
+                        <Link to="search"><div to="/search" onClick={() => {this.clickHandle();}} className="btn btn-search am-button am-button-primary" type="primary"><span>点击添加</span></div></Link>
                     </div>
                 </div>
             </section>

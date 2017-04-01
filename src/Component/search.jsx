@@ -55,7 +55,7 @@ class Main extends Component {
                                 query: {
                                     keyword: this.props.actions.value
                                 }
-                            }}><Button className="btn btn-complete" type="primary">搜索</Button></Link>
+                            }}><div className="btn btn-complete am-button am-button-primary" type="primary"><span>搜索</span></div></Link>
                 </section>
             </section>
         )
