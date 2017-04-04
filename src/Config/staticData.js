@@ -1,24 +1,22 @@
-export const defaultSummoner = [
-    {
-        id: 'Garen',
-        key: 86,
-        title: '盖伦',
-        name: '德玛西亚之力',
-        tags: ['Fighter', 'Tank']
-    }, {
-        id: 'Ashe',
-        key: 22,
-        title: '艾希',
-        name: '寒冰射手',
-        tags: ['Marksman', 'Support']
-    }, {
-        id: 'Ryze',
-        key: 13,
-        title: '瑞兹',
-        name: '符文法师',
-        tags: ['Mage', 'Fighter']
-    }
-];
+export const defaultSummoner = [{
+    id: 'Garen',
+    key: 86,
+    title: '盖伦',
+    name: '德玛西亚之力',
+    tags: ['Fighter', 'Tank']
+}, {
+    id: 'Ashe',
+    key: 22,
+    title: '艾希',
+    name: '寒冰射手',
+    tags: ['Marksman', 'Support']
+}, {
+    id: 'Ryze',
+    key: 13,
+    title: '瑞兹',
+    name: '符文法师',
+    tags: ['Mage', 'Fighter']
+}];
 
 export const occupation = {
     Assassin: "刺客",
@@ -92,7 +90,7 @@ export const getRandInfo = (userHotInfo) => {
 export const game_type = (type) => {
     switch (type) {
         case 1:
-            return '自定义'; 
+            return '自定义';
         case 2:
             return '新手关';
         case 3:
@@ -110,11 +108,12 @@ export const game_type = (type) => {
         case 9:
             return '大对决';
         default:
-            return '自定义';    
+            return '自定义';
     }
 }
 
+
 export const token = {
-    user: '78710-B0810-777C7-C9A85',
-    video: 'CED18-48E91-B98DE-BD1C8'
+    user: '18111-91B4B-E6B37-1BA99',
+    video: 'ACA7A-F7FE7-A25E4-0827F'
 }

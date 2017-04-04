@@ -150,7 +150,6 @@ class Main extends Component {
         let summaryInfoAll = battleSummaryInfo.data && battleSummaryInfo.data.length > 0 ? battleSummaryInfo.data : [];
         let summaryInfo = summaryInfoAll[0];
         let winNumber = this.getWinNumber() || {};
-        console.log(summaryInfo);
         let sortRankData = this.sortRankData(summaryInfo) || {};
         return (
         <section>

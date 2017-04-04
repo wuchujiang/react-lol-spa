@@ -3,7 +3,6 @@ import { findDOMNode } from 'react-dom';
 import {Accordion} from 'antd-mobile';
 import className from 'classnames';
 import { is, fromJS} from 'immutable';
-
 export default class PanelA extends Component{
     constructor(props) {
         super(props);

@@ -5,8 +5,16 @@
     padding-top: 20px;
     .video-img {
         position: relative;
+        height: 208px;
+        overflow: hidden;
         img {
             width: 100%;
+        }
+        span {
+            display: block;
+            img {
+                display: block;
+            }
         }
         .player-icon {
             position: absolute;
@@ -14,7 +22,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            img{
+            img {
                 position: absolute;
                 left: 50%;
                 top: 50%;
@@ -41,7 +49,7 @@
             max-height: 80px;
             overflow: hidden;
         }
-        p{
+        p {
             padding: 0 18px;
             height: 30px;
             line-height: 30px;

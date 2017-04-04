@@ -9,6 +9,8 @@ import PullView from './common/pullView';
 import {Header,template, Tartab} from './common/mixin';
 import { Button, Icon, Toast } from 'antd-mobile';
 import _ from 'lodash';
+import LazyLoad from 'react-lazyload';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 moment.locale('zh-cn')
 let pageIndex = 1;
 class Main extends Component {
@@ -26,7 +28,7 @@ class Main extends Component {
     }
    
 
-    componentDidMount() {
+    componentDidMount() { 
         if (this.props.requestData.video) {
             this.setState({
                 initData: this.props.requestData.video.data
@@ -67,7 +69,6 @@ class Main extends Component {
 
     scrollBottom() {
         //滑动到底部时加载；
-        console.log(111)
         if (this.state.scrollState == 0 || this.state.scrollState == 1) {
             this.setState({
                 scrollState: 2,
@@ -107,9 +108,18 @@ class Main extends Component {
                                     <li key={i}>
                                         <Link>
                                             <div className="video-img">
-                                                <img src={k.img} alt=""/>
+                                                <LazyLoad height={322} debounce={500}  throttle={100} offset={100} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
+                                                    <ReactCSSTransitionGroup key='1'
+                                                        transitionName="fade"
+                                                        transitionAppear={true}
+                                                        transitionAppearTimeout={200}
+                                                        transitionEnter={false}
+                                                        transitionLeave={false}>
+                                                        <img src={k.img} alt=""/>
+                                                    </ReactCSSTransitionGroup>
+                                                </LazyLoad >
                                                 <div className="player-icon">
-                                                    <img onLoad={e=>{console.log(232)}} src={require('src/Style/img/video_play.png')} alt=""/>
+                                                    <img src={require('src/Style/img/video_play.png')} alt=""/>
                                                 </div>
                                             </div>
                                             <h4>{k.title}</h4>
