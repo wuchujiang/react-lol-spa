@@ -13,7 +13,9 @@ import {
     SEARCHVALUE,
     SEARCHCLICK,
     GAMEFLAG,
-    SUMMONERCLICK
+    SUMMONERCLICK,
+    SEARCH_HISTORIAL,
+    DELETE_HISTORIAL
 } from '../types';
 
 //开始获取数据
@@ -136,4 +138,27 @@ export const gameFlag = (data = {}) => {
 export const summonerClick = (data = {}) => {
     return {type: SUMMONERCLICK, data}
 }
+
+//记录搜索历史记录
+export const historial = (param) => {
+    return (dispatch, getState) => {
+        let data = getState().historial;
+        if (!Array.isArray(param)) {
+            data.unshift(param);
+        } else {
+            data = data.concat(param);
+        }
+         
+        return dispatch({
+            type: SEARCH_HISTORIAL,
+            data
+        })
+    }
+}
+
+//清空历史纪录
+export const deleteHistory = (data = {}) => {
+    return {type:DELETE_HISTORIAL, data: []}
+}
+
 

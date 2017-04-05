@@ -10,7 +10,9 @@ import {
     SEARCHVALUE,
     SEARCHCLICK,
     GAMEFLAG,
-    SUMMONERCLICK
+    SUMMONERCLICK,
+    SEARCH_HISTORIAL,
+    DELETE_HISTORIAL
 } from '../types';
 
 //const initialState = Immutable.fromJS({}) //=Immutable.Map({})
@@ -100,6 +102,17 @@ export const summonerClick = (state = {}, action = {}) => {
     switch (action.type) {
         case SUMMONERCLICK:
             return action.data
+        default:
+            return state;
+    }
+}
+
+export const historial = (state = [], action = {}) => {
+    switch (action.type) {
+        case SEARCH_HISTORIAL:
+            return action.data
+        case DELETE_HISTORIAL:
+            return action.data;    
         default:
             return state;
     }

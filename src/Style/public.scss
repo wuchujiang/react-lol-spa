@@ -32,44 +32,12 @@ body {
     visibility: hidden;
 }
 
-.transitionWrapper-enter {
-    opacity: 0.01;
-    transition: opacity 30000ms ease-in;
+// 定义动画样式
+.fade-appear {
+opacity: 0.01;
 }
 
-.transitionWrapper-enter.transitionWrapper-enter-active {
-    opacity: 1;
-}
-
-.transitionWrapper-leave {
-    opacity: 1;
-    transition: opacity 30000ms ease-in;
-}
-
-.transitionWrapper-leave.transitionWrapper-leave-active {
-    opacity: 0;
-}
-
-.transitionWrapper {
-    position: relative;
-}
-
-.page-transition-enter {
-    transition: opacity .3s ease-in-out;
-    opacity: 0;
-    position: absolute;
-}
-
-.page-transition-enter.page-transition-enter-active {
-    opacity: 1;
-}
-
-.page-transition-leave {
-    transition: opacity .3s ease-in-out;
-    opacity: 1;
-    position: absolute;
-}
-
-.page-transition-leave.page-transition-leave-active {
-    opacity: 0;
+.fade-appear.fade-appear-active {
+opacity: 1;
+transition: opacity .4s ease-in;
 }

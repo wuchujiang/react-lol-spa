@@ -6,6 +6,7 @@ import { is, fromJS} from 'immutable';
 import {Tool} from '../Config/Tool';
 import {Header,template, Tartab} from './common/mixin';
 import { Button, Icon } from 'antd-mobile';
+import Historical from './search/history';
 import _ from 'lodash'; 
 
 class Main extends Component {
@@ -17,7 +18,11 @@ class Main extends Component {
        
     }
     componentDidMount() {
-        
+        //回填本地搜索历史记录；
+        // let history = Tool.getLocationObj('history');
+        // if (this.props.actions.historial.length == 0) {
+        //     this.props.historial(history);
+        // }
     }
 
     changeHandle(e) {
@@ -33,6 +38,21 @@ class Main extends Component {
             let {data} = nextProps.state;
 
         }
+    }
+
+    saveHistory() {
+        let {id, name} = this.props.actions.areaCheck;
+        this.props.historial({
+            id,
+            name,
+            value: this.props.actions.value
+        });
+             //回填本地搜索历史记录；
+        let history = Tool.getLocationObj('history');
+        let historial = this.props.actions.historial;
+        let oldHistory = Tool.getLocationObj('history');        
+        //如果刷新后redux里面的数据为空，第一次回填时需要把缓存里面的数据合并到redux；
+        Tool.setLocationObj('history', historial.length === 1 ? historial.concat(oldHistory) : historial);
     }
    
     render() {
@@ -50,14 +70,17 @@ class Main extends Component {
                             <Icon type="down" />
                         </Link>
                     </div>
-                    <Link to={{
-                                pathname: `/searchResult`,
-                                query: {
-                                    keyword: this.props.actions.value
-                                }
-                            }}><div className="btn btn-complete am-button am-button-primary" type="primary"><span>搜索</span></div></Link>
+                    
+                        <Link to={{
+                            pathname: `/searchResult`,
+                            query: {
+                                keyword: this.props.actions.value
+                            }
+                        }}>
+                        <div onClick={e => { this.saveHistory();}} className="btn btn-complete am-button am-button-primary" type="primary"><span>搜索</span></div>
+                        </Link>
                 </section>
-                
+                <Historical {...this.props} />
             </section>
         )
     }

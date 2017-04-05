@@ -28,14 +28,14 @@ export default class PanelA extends Component{
                   !_.isEmpty(championDetail) && championDetail.skins.map((k, i) => {
                   return (
                     <li>
-                        <LazyLoad once={false}  throttle={50} height={300} placeholder={<div>加载中......</div>}>
+                        <LazyLoad throttle={500} offset={100} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
                             <ReactCSSTransitionGroup key='1'
                             transitionName="fade"
                             transitionAppear={true}
                             transitionAppearTimeout={500}
                             transitionEnter={false}
                             transitionLeave={false}>
-                            <img  src={`http://cdn.tgp.qq.com/pallas/images/skins/original/${championDetail.key}-${k.id}.jpg`} alt=""/>
+                            <img src={`http://cdn.tgp.qq.com/pallas/images/skins/original/${championDetail.key}-${k.id}.jpg`} alt=""/>
                             </ReactCSSTransitionGroup>
                         </LazyLoad >
                         <p>{k.name}</p>

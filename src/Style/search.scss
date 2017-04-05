@@ -1,8 +1,8 @@
-.content{
-    background: #fff;
-}
+
  .search-page {
     padding: 50px 30px;
+    margin-bottom: 40px;
+    background: #fff;
 }
 .input-info {
     height: 100px;
@@ -29,5 +29,19 @@
         height: 100px;
         line-height: 100px;
         font-size: 28px;
+    }
+}
+
+.search-history{
+    background-color: #fff;
+    header{
+        display: flex;
+        justify-content: space-between;
+        .delete{
+            color: orange;
+        }
+    }
+    a{
+        display: block;
     }
 }

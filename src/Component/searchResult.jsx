@@ -45,7 +45,7 @@ class Main extends Component {
                     let searchData = res.data;
                     if (searchData && searchData.length > 0) {
                         //根据id筛选出对应大区的玩家
-                        let id = this.props.actions.areaCheck.id;
+                        let id = this.props.location.query.id ? this.props.location.query.id : this.props.actions.areaCheck.id;
                         let results = [];
                         if (id == 0) {
                             //筛选出所有的玩家;
@@ -58,8 +58,6 @@ class Main extends Component {
                                 }
                             }
                         }
-                        console.log(results);
-                        
                         this.setState({
                             searchResult: results,
                             requestState: true
@@ -106,7 +104,6 @@ class Main extends Component {
     componentWillUpdate(nextProps,nextState){
         if (this.props !== nextProps) {
             let {data} = nextProps.state;
-            console.log(data);
         }
     }
 
@@ -129,7 +126,6 @@ class Main extends Component {
                         return (
                             <div key={i} onClick={e => {this.clickHandle(k, {area: this.getUserArea(k.area_id)})}}>
                             <Link
-                                
                                 to={{
                                 pathname: `/hero`
                             }}>

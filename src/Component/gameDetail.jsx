@@ -92,7 +92,6 @@ class Main extends Component {
     render() {
         let gameDetail = this.state.gameDetail.data && this.state.gameDetail.data.length > 0 ? this.state.gameDetail.data[0].battle : {};
         let qquin = this.props.actions.searchClick.qquin;
-        console.log(gameDetail);
         return (
             <div className="game-detail">
                 <Header title="战绩详情" />

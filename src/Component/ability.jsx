@@ -88,7 +88,6 @@ class Main extends Component {
         let userHotInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : [];
         let summaryInfo = battleSummaryInfo.data && battleSummaryInfo.data.length > 0 ? battleSummaryInfo.data : {};
         //小于30级 
-        console.log(userHotInfo.level);
         if (userHotInfo.level < 30 || (userHotInfo.queue == 255 && userHotInfo.tier == 255)) {
             return false;
         }
@@ -143,7 +142,6 @@ class Main extends Component {
     }
 
     render() {
-        console.log(this.props);
         let getUserData = this.props.requestData ? this.props.requestData.getUserData : {};
         let rankData = getUserData.data && getUserData.data.length > 0 ? getUserData.data : [];
         let battleSummaryInfo = this.props.requestData ? this.props.requestData.battleSummaryInfo : [];
