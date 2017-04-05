@@ -157,7 +157,8 @@ export default class panelA extends Component{
     render() {
 
         let {getUserHotInfo, getUserData, getCombatList, battleSummaryInfo} = this.state;
-        let {qquin, icon_id, name, area, level} = this.props.actions.searchClick;
+        let {area} = this.props.actions.searchClick;
+        let {name, icon, level, qquin} = getUserHotInfo.data[0];
         let rankData = getUserData.data && getUserData.data.length > 0 ? getUserData.data : [];
         let userHotInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : {};
         let winNumber = this.getWinNumber() || {};
@@ -170,7 +171,7 @@ export default class panelA extends Component{
                 <div className="banner">
                     <div className="record-l">
                         <div className="user-info-l">
-                            <img src={`http://cdn.tgp.qq.com/lol/images/resources/usericon/${icon_id}.png`} alt=""/>
+                            <img src={`http://cdn.tgp.qq.com/lol/images/resources/usericon/${icon}.png`} alt=""/>
                             <span className="level">{level}</span>
                         </div>
                         <div className="user-info-r">

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
-import index from '../Component/index'; //销售录入
+import index from '../Component/index';
 
 class Roots extends Component {
     render() {
@@ -75,6 +75,12 @@ const home = (location, cb) => {
     },'home')
 }
 
+const player = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/player').default)
+    },'player')
+}
+
 
 const RouteConfig = (
     <Router history={history}>
@@ -88,7 +94,10 @@ const RouteConfig = (
             <Route path="ability" getComponent={ability} />
             <Route path="gameDetail" getComponent={gameDetail} />
             <Route path="summoner" getComponent={summoner} />
-            <Route path="video" getComponent={video} />
+            <Route path="video" component={Roots} >
+                <IndexRoute getComponent={video} />//首页
+                <Route path="player" getComponent={player} />
+            </Route>
             <Route path="heroContent" getComponent={heroContent} />
             <Route path="home" getComponent={home} />
             <Redirect from='*' to='/' />

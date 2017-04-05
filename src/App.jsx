@@ -25,16 +25,7 @@ store.subscribe(() => { //监听state变化
 
 render(
     <Provider store={store}>
-         <ReactCSSTransitionGroup
-            component="div"
-            className="fade"
-            transitionName="fade"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}>
-            {React.cloneElement(route, {
-                key:_.uniqueId()
-            })}
-        </ReactCSSTransitionGroup>
+        {route}
     </Provider>,
     document.body.appendChild(document.createElement('div'))
 );

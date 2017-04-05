@@ -48,12 +48,25 @@ class Main extends Component {
            index: index
        })
     } 
+
+    addDefault() {
+        // let {qquin, icon_id, name, area, level} = this.props.actions.searchClick;
+        // let userData = {
+        //     qquin,
+        //     icon_id,
+        //     name,
+        //     area,
+        //     level,
+        //     vaid: this.props.actions.searchClick.area_id
+        // }
+    }
+
     render() {
         let areaCheck = this.props.actions.areaCheck;
         let index = this.state.index;
         return (
             <section>
-                <Header title="英雄战绩" />
+                <Header title="英雄战绩" rightContent={<span onClick={e => { this.addDefault();}}>添加默认</span>} />
                 <nav className="small-bar">
                     <ul>
                         <li className={className({active: index === 0})} onClick={() => {this.handleChangeIndex(0)}}>战绩</li>

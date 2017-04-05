@@ -41,9 +41,7 @@ export class Header extends Component {  //头部标题
         return (
             <div className="nav-space">
                 <NavBar leftContent={leftContent} mode="dark" onLeftClick={() => window.history.back()}
-                rightContent={[
-                    <Icon key="1" type="ellipsis" />
-                ]}
+                rightContent={this.props.rightContent}
                 >{title}</NavBar>
             </div>
         );
