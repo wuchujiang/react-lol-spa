@@ -106,7 +106,7 @@ class Main extends Component {
                             !_.isEmpty(videos) && videos.map((k ,i) => {
                             return (
                                     <li key={i}>
-                                        <Link to="video/player">
+                                        <Link to="/video/player">
                                             <div className="video-img">
                                                 <LazyLoad debounce={500}  throttle={200} offset={100} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
                                                     <ReactCSSTransitionGroup key='1'

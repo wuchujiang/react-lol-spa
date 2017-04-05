@@ -79,7 +79,7 @@ export default class Record extends Component {
                     {this.state.initData.map((k, i) => {
                         return (
                             <div  key={i} onClick={(e) => {this.clickHandle(k)}}>
-                            <Link to="gameDetail" >
+                            <Link to="hero/gameDetail" >
                                 <div className={className({win: k.win == 1, item: true})}>
                                     <div className="item-one">
                                             <img src={`http://cdn.tgp.qq.com/pallas/images/champions_id/${k.champion_id}.png`} />

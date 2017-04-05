@@ -60,12 +60,12 @@ class Main extends Component {
                 <Header title="选择大区" />
                 <ul className="area-list">
                     {!_.isEmpty(areaList) && <li onClick={e => {this.clickHandle({id: 0, name: '全部区域'})}} key={0}>
-                        <Link to='search'><span className={areaCheck.id === 0 ? "check" : "unCheck" }></span><p>全部区域</p></Link>
+                        <Link to='/search'><span className={areaCheck.id === 0 ? "check" : "unCheck" }></span><p>全部区域</p></Link>
                     </li>}
                     {!_.isEmpty(areaList) && areaList.map((k, i) => {
                         return (
                             <li onClick={e => {this.clickHandle(k)}} key={i}>
-                                <Link to='search'><span className={areaCheck.id === k.id ? 'check' : 'unCheck'} ></span><p>{k.name}  {k.isp}</p></Link>
+                                <Link to='/search'><span className={areaCheck.id === k.id ? 'check' : 'unCheck'} ></span><p>{k.name}  {k.isp}</p></Link>
                             </li>
                         )
                     })}

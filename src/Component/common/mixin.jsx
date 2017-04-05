@@ -70,7 +70,7 @@ export class Tartab extends Component{
                 <TabBar.Item
                     icon={< Icon type = "koubei-o" size = "md" />}
                     selectedIcon={< Icon type = "koubei" size = "md" />}
-                    title={<Link to='/video'>视频</Link>}
+                    title={<Link to='video'>视频</Link>}
                     key="视频"
                     selected={this.props.selected == 1}
                     data-seed="logId1">

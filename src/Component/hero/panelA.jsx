@@ -139,6 +139,13 @@ export default class panelA extends Component{
         return total;
     }
     
+    componentDidUpdate() {
+        let {getUserHotInfo, getUserData, getCombatList, battleSummaryInfo} = this.state;
+        if (!_.isEmpty(getUserData) && !_.isEmpty(getCombatList) && !_.isEmpty(getUserHotInfo) && !_.isEmpty(battleSummaryInfo)){
+            Toast.hide();
+        }
+    }
+    
     getWinNumber() {
         let getTotalData = this.getTotalData();  //获取全部数据
         let total = {
@@ -158,14 +165,12 @@ export default class panelA extends Component{
 
         let {getUserHotInfo, getUserData, getCombatList, battleSummaryInfo} = this.state;
         let {area} = this.props.actions.searchClick;
-        let {name, icon, level, qquin} = getUserHotInfo.data[0];
         let rankData = getUserData.data && getUserData.data.length > 0 ? getUserData.data : [];
         let userHotInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : {};
+        let {name, icon, level, qquin} = userHotInfo;        
         let winNumber = this.getWinNumber() || {};
         let combatList = getCombatList.data && getCombatList.data.length > 0 ? getCombatList.data[0] : {};
-        if (!_.isEmpty(getUserData) && !_.isEmpty(getCombatList) && !_.isEmpty(getUserHotInfo) && !_.isEmpty(battleSummaryInfo)){
-            Toast.hide();
-        }
+        
         return (
             <div className="record">
                 <div className="banner">
@@ -191,7 +196,7 @@ export default class panelA extends Component{
                         </div>
                         <p>{getRandInfo(userHotInfo)}</p>
                     </div>
-                    <Link className="rank-r" to="ability">
+                    <Link className="rank-r" to="hero/ability">
                         <div className="rank-number">
                             <p>胜率<span>{winNumber.total_num == 0 ? '无' : Math.round((winNumber.win_num / winNumber.total_num) * 100) + '%'}</span></p>
                             <p>总局数<span>{winNumber.total_num}场</span></p>

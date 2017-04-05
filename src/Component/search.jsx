@@ -65,14 +65,14 @@ class Main extends Component {
                         <input value={this.props.actions.value} onChange={e => {this.changeHandle(e)}} placeholder="请输入召唤师名称" />
                     </div>
                     <div onClick={e=>{}} className="input-info">
-                        <Link to="/areaList">
+                        <Link to="/search/areaList">
                             <p className="check-info">{areaCheck.name || '选择区域'}</p>
                             <Icon type="down" />
                         </Link>
                     </div>
                     
                         <Link to={{
-                            pathname: `/searchResult`,
+                            pathname: `search/searchResult`,
                             query: {
                                 keyword: this.props.actions.value
                             }

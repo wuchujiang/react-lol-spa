@@ -1,12 +1,22 @@
 import React, {Component, PropTypes} from 'react';
 import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import index from '../Component/index';
 
 class Roots extends Component {
     render() {
         return (
-            <div>{this.props.children}</div>
+            <ReactCSSTransitionGroup
+                component="div"
+                className="transition-wrapper"
+                transitionName="example"
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}>
+                {React.cloneElement(this.props.children, {
+                    key: this.props.location.pathname
+                })}
+                </ReactCSSTransitionGroup>
         );
     }
 }
@@ -91,6 +101,11 @@ const RouteConfig = (
             <Route path="ability" getComponent={ability} />
             <Route path="gameDetail" getComponent={gameDetail} />
             <Route path="summoner" getComponent={summoner} />
+            <Route path="hero" component={Roots} >
+                <IndexRoute getComponent={hero} />//首页
+                <Route path="ability" getComponent={ability} />
+                <Route path="gameDetail" getComponent={gameDetail} />
+            </Route>
             <Route path="search" component={Roots} >
                 <IndexRoute getComponent={search} />//首页
                 <Route path="areaList" getComponent={areaList} />
