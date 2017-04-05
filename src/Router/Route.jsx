@@ -87,13 +87,15 @@ const RouteConfig = (
         <Route path="/" component={Roots}>
             <IndexRoute component={index} />//首页
             <Route path="index" component={index} />
-            <Route path="search" getComponent={search} /> //页面搜索
-            <Route path="areaList" getComponent={areaList} /> //选择大区
-            <Route path="searchResult" getComponent={searchResult} /> //选择大区
             <Route path="hero" getComponent={hero} />
             <Route path="ability" getComponent={ability} />
             <Route path="gameDetail" getComponent={gameDetail} />
             <Route path="summoner" getComponent={summoner} />
+            <Route path="search" component={Roots} >
+                <IndexRoute getComponent={search} />//首页
+                <Route path="areaList" getComponent={areaList} />
+                <Route path="searchResult" getComponent={searchResult} />
+            </Route>
             <Route path="video" component={Roots} >
                 <IndexRoute getComponent={video} />//首页
                 <Route path="player" getComponent={player} />
