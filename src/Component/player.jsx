@@ -1,17 +1,8 @@
 import React, {Component, PropTypes} from 'react';
-import pureRender from 'pure-render-decorator';
-import {History, Link } from 'react-router';
 import { connect } from 'react-redux';
 import { is, fromJS} from 'immutable';
-import moment from 'moment';
-import PullView from './common/pullView';
 
 import {Header,template, Tartab} from './common/mixin';
-import { Button, Icon, Toast } from 'antd-mobile';
-import _ from 'lodash';
-import LazyLoad from 'react-lazyload';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-moment.locale('zh-cn')
 let pageIndex = 1;
 class Main extends Component {
     constructor() {
@@ -26,7 +17,12 @@ class Main extends Component {
    
 
     componentDidMount() { 
-        
+        let iframe = document.getElementsByTagName('iframe')[0];
+        let navSpace = document.querySelector('.nav-space');
+        iframe.style.height = (window.innerHeight - navSpace.clientHeight) + 'px';
+        iframe.style.display = 'block';
+        iframe.style.width = '100%';
+        iframe.setAttribute('frameborder', 'no');
     }
 
      componentDidUpdate() {
@@ -46,12 +42,10 @@ class Main extends Component {
 
    
     render() {
-        let videos = this.state.initData;
         return (
-            
             <section>
-                <Header title="视频" />
-                <div>player</div>
+                <Header title="正在播放" />
+                <div dangerouslySetInnerHTML={{__html: decodeURIComponent(this.props.location.query.content)}} />
             </section>
         )
     }

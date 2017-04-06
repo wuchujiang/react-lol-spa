@@ -106,7 +106,12 @@ class Main extends Component {
                             !_.isEmpty(videos) && videos.map((k ,i) => {
                             return (
                                     <li key={i}>
-                                        <Link to="/video/player">
+                                        <Link to={{
+                                                pathname: `/video/player`,
+                                                query: {
+                                                    content: encodeURIComponent(k.content)
+                                                }
+                                            }}>
                                             <div className="video-img">
                                                 <LazyLoad debounce={500}  offset={100} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
                                                     <ReactCSSTransitionGroup key='1'
@@ -123,7 +128,7 @@ class Main extends Component {
                                                 </div>
                                             </div>
                                             <h4>{k.title}</h4>
-                                            <p>{moment(k.createdate).endOf('day').fromNow()}</p>
+                                            <p style={{color: '#999'}}>{moment(k.createdate).endOf('day').fromNow()}</p>
                                         </Link>
                                     </li>
                                 )
