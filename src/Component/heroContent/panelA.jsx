@@ -94,7 +94,7 @@ export default class PanelA extends Component{
                     <h4>技能介绍</h4>
                     <div className="skill-content">
                         <ul className="skill-image">
-                            {championDetail.passive && championDetail.passive.image && <li className={className({
+                            {championDetail.passive && championDetail.passive.image && <li  key={_.uniqueId()} className={className({
                                 active: this.state.skillActive === 1
                             })} onClick={e => { this.changeSkillMain(1) } }>
                                 <img onError={e => { this.imgError(e) } } src={`http://ossweb-img.qq.com/images/lol/img/passive/${championDetail.passive.image.full}`} alt=""/>

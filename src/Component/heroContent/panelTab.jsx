@@ -18,6 +18,15 @@ export default class PanelTab extends Component {
         this.handleChangeIndex = this.handleChangeIndex.bind(this);
     }
 
+    componentDidMount() {
+        let details = document.querySelector('.details');
+        let navSpace = document.querySelector('.nav-space');
+        let championDetail = document.querySelector('.champion-detail');
+        let smallBar = document.querySelector('.small-bar');
+        console.log(window.innerHeight , details.clientHeight , navSpace.clientHeight , smallBar.clientHeight)
+        details.style.height = (window.innerHeight - details.clientHeight - navSpace.clientHeight - smallBar.clientHeight) + 'px';
+    }
+
     shouldComponentUpdate(nextProps, nextState) {
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     }
