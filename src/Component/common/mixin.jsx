@@ -40,7 +40,7 @@ export class Header extends Component {  //头部标题
         }*/
         return (
             <div className="nav-space">
-                <NavBar leftContent={leftContent} mode="dark" onLeftClick={() => window.history.back()}
+                <NavBar style={this.props.style} leftContent={leftContent} mode="dark" onLeftClick={() => window.history.back()}
                 rightContent={this.props.rightContent}
                 >{title}</NavBar>
             </div>

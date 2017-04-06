@@ -108,7 +108,7 @@ class Main extends Component {
                                     <li key={i}>
                                         <Link to="/video/player">
                                             <div className="video-img">
-                                                <LazyLoad debounce={500}  throttle={200} offset={100} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
+                                                <LazyLoad debounce={500}  offset={100} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
                                                     <ReactCSSTransitionGroup key='1'
                                                         transitionName="fade"
                                                         transitionAppear={true}

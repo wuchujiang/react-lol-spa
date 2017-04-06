@@ -96,11 +96,10 @@ const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
             <IndexRoute component={index} />//首页
-            <Route path="index" component={index} />
-            <Route path="hero" getComponent={hero} />
-            <Route path="ability" getComponent={ability} />
-            <Route path="gameDetail" getComponent={gameDetail} />
-            <Route path="summoner" getComponent={summoner} />
+            <Route path="summoner" component={Roots} >
+                <IndexRoute getComponent={summoner} />//首页
+                <Route path="heroContent" getComponent={heroContent} />
+            </Route>
             <Route path="hero" component={Roots} >
                 <IndexRoute getComponent={hero} />//首页
                 <Route path="ability" getComponent={ability} />
@@ -115,7 +114,6 @@ const RouteConfig = (
                 <IndexRoute getComponent={video} />//首页
                 <Route path="player" getComponent={player} />
             </Route>
-            <Route path="heroContent" getComponent={heroContent} />
             <Route path="home" getComponent={home} />
             <Redirect from='*' to='/' />
         </Route>

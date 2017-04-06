@@ -17,7 +17,7 @@ export default class SummonerList extends Component{
         let {name, title, tags, keys, index, click} = this.props;
         return (
             <li onClick={ e=>this.props.summonerClick({name, keys})} key={_.uniqueId()}>
-               <Link to='/heroContent'>
+               <Link to='summoner/heroContent'>
                     <div className="summoner-item">
                         <div className="summoner-img">
                             <img onError={e=>{this.imgError(e)}} src={`http://cdn.tgp.qq.com/pallas/images/champions_id/${keys}.png`} />

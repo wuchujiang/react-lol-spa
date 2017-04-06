@@ -27,8 +27,8 @@ export default class PanelA extends Component{
               {
                   !_.isEmpty(championDetail) && championDetail.skins.map((k, i) => {
                   return (
-                    <li>
-                        <LazyLoad throttle={500} offset={100} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
+                      <li key={i}>
+                        <LazyLoad throttle={500} placeholder={<img src={require('src/Style/img/img_fail_middle.png')} />}>
                             <ReactCSSTransitionGroup key='1'
                             transitionName="fade"
                             transitionAppear={true}

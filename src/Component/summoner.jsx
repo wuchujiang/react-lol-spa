@@ -23,6 +23,14 @@ class Main extends Component {
        
     }
     componentDidMount() {
+        let details = document.querySelector('.details');
+        let navSpace = document.querySelector('.nav-space');
+        let championDetail = document.querySelector('.champion-detail');
+        let smallBar = document.querySelector('.small-bar');
+        let tablist = document.querySelector('.am-tab-bar-bar');
+        
+        details.style.height = (window.innerHeight - navSpace.clientHeight- tablist.clientHeight - smallBar.clientHeight) + 'px';
+
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -55,11 +63,11 @@ class Main extends Component {
                         <li className={className({ active: index === 2 })} onClick={() => { this.handleChangeIndex(2) } }>全部英雄</li>
                     </ul>
                 </nav>
-                <SwipeableViews  className="details" index={index} onChangeIndex={index => { this.handleChangeIndex(index) } }>
+                <SwipeableViews containerStyle={{height: '100%'}} className="details" index={index} onChangeIndex={index => { this.handleChangeIndex(index) } }>
                        <PanelA {...this.props} />
-                    <div>
-                       2323
-                    </div>
+                        <div>
+                        2323
+                        </div>
                        <PanelC {...this.props} />
                 </SwipeableViews>
             </section>

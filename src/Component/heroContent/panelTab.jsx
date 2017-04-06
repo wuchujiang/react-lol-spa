@@ -23,8 +23,7 @@ export default class PanelTab extends Component {
         let navSpace = document.querySelector('.nav-space');
         let championDetail = document.querySelector('.champion-detail');
         let smallBar = document.querySelector('.small-bar');
-        console.log(window.innerHeight , details.clientHeight , navSpace.clientHeight , smallBar.clientHeight)
-        details.style.height = (window.innerHeight - details.clientHeight - navSpace.clientHeight - smallBar.clientHeight) + 'px';
+        details.style.height = (window.innerHeight - navSpace.clientHeight - smallBar.clientHeight) + 'px';
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -48,10 +47,10 @@ export default class PanelTab extends Component {
                         <li className={className({active: index === 2})} onClick={() => {this.handleChangeIndex(2)}}>视频</li>
                     </ul>
                 </nav>
-                <SwipeableViews animateHeight ignoreNativeScroll className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
-                    <PanelA getHeroContent={this.props.getHeroContent}/>
-                    <PanelB getHeroContent={this.props.getHeroContent}/>
-                    <PanelC {...this.props}/>
+                <SwipeableViews containerStyle={{height: '100%'}} className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
+                    <PanelA key='1'  getHeroContent={this.props.getHeroContent}/>
+                    <PanelB key='2'  getHeroContent={this.props.getHeroContent}/>
+                    <PanelC key='3'  {...this.props}/>
                 </SwipeableViews>
             </div>
         )

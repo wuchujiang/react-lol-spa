@@ -77,7 +77,7 @@ class Main extends Component {
         let index = this.state.index;
         return (
             <section>
-                <Header title={this.props.actions.summonerClick.name}/>
+                <Header style={{background: 'transparent'}} title={this.props.actions.summonerClick.name}/>
                 <div className='champion-detail' style={{backgroundImage: `url(http://cdn.tgp.qq.com/pallas/images/skins/original/${this.props.actions.summonerClick.keys}-000.jpg)`}}>
                     <div className="nav-spaces"></div>       
                     <h4>{championDetail.title}</h4>

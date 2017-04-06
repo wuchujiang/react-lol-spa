@@ -39,12 +39,12 @@ body {
 
 .fade-appear.fade-appear-active {
     opacity: 1;
-    transition: opacity .4s ease-in;
+    transition: opacity .2s ease-in;
 }
 
 .example-enter {
     opacity: 0.01;
-    transition: opacity .5s ease-in;
+    transition: opacity .25s ease-in;
 }
 
 .example-enter.example-enter-active {
@@ -53,7 +53,7 @@ body {
 
 .example-leave {
     opacity: 1;
-    transition: opacity .5s ease-in;
+    transition: opacity .25s ease-in;
 }
 
 .example-leave.example-leave-active {
