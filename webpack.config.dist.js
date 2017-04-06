@@ -10,7 +10,12 @@ var APP_PATH = path.resolve(ROOT_PATH, 'src'); //__dirname 中的src目录，以
 var APP_FILE = path.resolve(APP_PATH, 'app'); //根目录文件app.jsx地址
 var BUILD_PATH = path.resolve(ROOT_PATH, 'pxq/dist'); //发布文件所存放的目录/pxq/dist/前面加/报错？
 
+var svgDirs = [
+    require.resolve('antd-mobile').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
+    path.resolve(APP_PATH, '/Style/svg'), // 2. 自己私人的 svg 存放目录
 
+    // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
+];
 module.exports = {
     entry: {
         app: APP_FILE,
@@ -92,12 +97,13 @@ module.exports = {
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', '.less', '.scss', '.css'], //后缀名自动补全,
-        root: [path.resolve('src'),  __dirname]
+        root: [path.resolve('src'), __dirname]
 
     },
     babel: {
         plugins: [
-            ['import', { libraryName: 'antd-mobile', style: 'css' }]        ]
+            ['import', { libraryName: 'antd-mobile', style: 'css' }]
+        ]
     },
     postcss: [
         pxtorem({
