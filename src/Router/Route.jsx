@@ -16,7 +16,7 @@ class Roots extends Component {
                 {React.cloneElement(this.props.children, {
                     key: this.props.location.pathname
                 })}
-                </ReactCSSTransitionGroup>
+            </ReactCSSTransitionGroup>
         );
     }
 }
