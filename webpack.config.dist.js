@@ -47,11 +47,12 @@ module.exports = {
         }, {
             test: /\.less$/,
             exclude: /^node_modules$/,
-            loader: ExtractTextPlugin.extract('style', ['css', 'autoprefixer', 'less'])
+            loader: ExtractTextPlugin.extract('style', ['css!postcss', 'autoprefixer', 'less'])
         }, {
             test: /\.scss$/,
             exclude: /^node_modules$/,
-            loader: ExtractTextPlugin.extract('style', ['css', 'autoprefixer', 'sass'])
+            loader: ExtractTextPlugin.extract('style', ['css!postcss', 'autoprefixer', 'sass']),
+            include: [APP_PATH]
         }, {
             test: /\.(svg)$/i,
             loader: 'svg-sprite',
@@ -59,16 +60,19 @@ module.exports = {
         }, {
             test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
             exclude: /^node_modules$/,
-            loader: 'file-loader?name=[name].[ext]'
+            loader: 'file-loader?name=[name].[ext]',
+            include: [APP_PATH]
         }, {
             test: /\.(png|jpg|gif)$/,
             exclude: /^node_modules$/,
             loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
-            //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图
+            //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片
+            include: [APP_PATH]
         }, {
             test: /\.jsx$/,
             exclude: /^node_modules$/,
-            loaders: ['jsx', 'babel']
+            loaders: ['jsx', 'babel'],
+            include: [APP_PATH]
         }]
     },
     plugins: [
@@ -96,7 +100,8 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['', '.js', '.jsx', '.less', '.scss', '.css'], //后缀名自动补全,
+        modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
+        extensions: ['', '.web.js', '.js', '.jsx', '.css', '.less', '.scss', '.json'], //后缀名自动补全
         root: [path.resolve('src'), __dirname]
 
     },
