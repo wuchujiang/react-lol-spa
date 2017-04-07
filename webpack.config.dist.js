@@ -43,7 +43,7 @@ module.exports = {
         }, {
             test: /\.css$/,
             exclude: /^node_modules$/,
-            loader: ExtractTextPlugin.extract('style', ['css', 'autoprefixer'])
+            loader: ExtractTextPlugin.extract('style', ['css!postcss', 'autoprefixer'])
         }, {
             test: /\.less$/,
             exclude: /^node_modules$/,

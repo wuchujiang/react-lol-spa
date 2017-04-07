@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import request from 'superagent';
 import {Toast} from 'antd-mobile';
 import {target} from '../../Config/Config'
 import {Tool} from '../../Config/Tool'
@@ -65,24 +66,38 @@ const getDataSuccess = (path, json, success, name) => {
 export const getData = (path, postData, success, name) => {
     let url = target + path + Tool.paramType(postData);
     return dispatch => {
-        dispatch(getDataStart(postData))
-        return fetch(path, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'DAIWAN-API-TOKEN': token.user
-            },
-                timeout: 8000,
-                mode: 'cors'
+        dispatch(getDataStart(postData));
+        // return fetch(path, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'DAIWAN-API-TOKEN': token.user
+        //     },
+        //         mode: 'cors'
+        //     })
+        //     .then(response => response.json())
+        //     .then(json => dispatch(getDataSuccess(path, json, success, name)))
+        //     .catch(error => {
+        //         Toast.hide();
+        //         Toast.fail('网络连接错误！')
+        //         console.log(error);
+        //     })
+        return request.get(path)
+            .query(postData)
+            .set('DAIWAN-API-TOKEN', token.user)
+            .timeout(10000)
+            .then(res => {
+                let json = JSON.parse(res.text);
+                dispatch(getDataSuccess(path, json , success, name));
             })
-            .then(response => response.json())
-            .then(json => dispatch(getDataSuccess(path, json, success, name)))
-            .catch(error => {
+            .catch(err => {
                 Toast.hide();
                 Toast.fail('网络连接错误！')
-                console.log(error);
+                console.log(err);
             })
     }
+
+    
 }
 
 //手动调用获取数据的aciton

@@ -48,10 +48,26 @@ export class Header extends Component {  //头部标题
     }
 }
 
+
 export class Tartab extends Component{
-    constructor(props) {
-        super(props)
+    constructor(props, context) {
+        super(props);
+        this.jumpPage = this.jumpPage.bind(this);
     }
+
+    jumpPage(k) {
+        console.log(this.context);
+        if(k == 1){
+            this.context.router.push('/app')
+        }else if(k==2){
+            this.context.router.push('/video')
+        }else if(k == 3){
+            this.context.router.push('/summoner')
+        }else if( k == 4){
+            this.context.router.push('/home')
+        }
+    }
+
     render() {
         return (
             <TabBar
@@ -60,8 +76,9 @@ export class Tartab extends Component{
                 barTintColor="white"
                 >
                 <TabBar.Item
-                    title={<Link to='/app'>搜索</Link>}
+                    title="搜索"
                     key="搜索"
+                    onPress={e=>{this.jumpPage(1);}}
                     selected={this.props.selected == 0}
                     icon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     selectedIcon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
@@ -70,34 +87,41 @@ export class Tartab extends Component{
                 <TabBar.Item
                     icon={< Icon type = "koubei-o" size = "md" />}
                     selectedIcon={< Icon type = "koubei" size = "md" />}
-                    title={<Link to='video'>视频</Link>}
+                     onPress={e=>{this.jumpPage(2);}}
+                    title="视频"
                     key="视频"
                     selected={this.props.selected == 1}
                     data-seed="logId1">
                 </TabBar.Item>
                 <TabBar.Item
                     selected={this.props.selected == 2}
+                     onPress={e=>{this.jumpPage(3);}}
                     icon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     selectedIcon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
-                    title={<Link to='/summoner'>英雄</Link>}
+                    title="英雄"
                     key="英雄"
                    >
                 </TabBar.Item>
                 <TabBar.Item
                     selected={this.props.selected == 3}
+                    onPress={e=>{this.jumpPage(4);}}
                     icon={{
                     uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg'
                 }}
                     selectedIcon={{
                     uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg'
                 }}
-                    title={<Link to='/home'>我的</Link>}
+                    title="我的"
                     key="我的"
                    >
                 </TabBar.Item>
             </TabBar>
         )
     }
+}
+
+Tartab.contextTypes = {
+    router: PropTypes.object
 }
 
 
