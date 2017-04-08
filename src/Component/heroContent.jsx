@@ -26,7 +26,7 @@ class Main extends Component {
     }
     componentDidMount() {
         Toast.loading('加载中', 0);
-        this.props.getData(`http://lolapi.games-cube.com/GetChampionDetail?champion_id=${this.props.actions.summonerClick.keys}`, null, (data) => {
+        this.props.getData(`/GetChampionDetail?champion_id=${this.props.actions.summonerClick.keys}`, null, (data) => {
             Toast.hide();
             this.setState({
                 getHeroContent: data

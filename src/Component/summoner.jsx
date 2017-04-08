@@ -63,7 +63,7 @@ class Main extends Component {
                         <li className={className({ active: index === 2 })} onClick={() => { this.handleChangeIndex(2) } }>全部英雄</li>
                     </ul>
                 </nav>
-                <SwipeableViews containerStyle={{height: '100%'}} className="details" index={index} onChangeIndex={index => { this.handleChangeIndex(index) } }>
+                <SwipeableViews resistance containerStyle={{height: '100%'}} className="details" index={index} onChangeIndex={index => { this.handleChangeIndex(index) } }>
                        <PanelA {...this.props} />
                         <div>
                         2323

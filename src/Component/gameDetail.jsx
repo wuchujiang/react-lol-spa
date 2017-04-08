@@ -25,7 +25,7 @@ class Main extends Component {
     componentDidMount() {
         let {qquin, vaid, game_id} = this.props.actions.gameFlag;
         Toast.loading('加载中', 0);
-        this.props.getData(`http://lolapi.games-cube.com/GameDetail?qquin=${qquin}&vaid=${vaid}&gameid=${game_id}`, null, (data) => {
+        this.props.getData(`/GameDetail?qquin=${qquin}&vaid=${vaid}&gameid=${game_id}`, null, (data) => {
             Toast.hide();
             this.setState({
                 gameDetail: data

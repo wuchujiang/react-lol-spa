@@ -37,10 +37,9 @@ import FastClick from './fastclick.js';
 flex(100, 1);
 
 if ('addEventListener' in document) {
-    document
-        .addEventListener('DOMContentLoaded', function() {
-            FastClick.attach(document.body);
-        }, false);
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
 }
 
 const system = (() => {

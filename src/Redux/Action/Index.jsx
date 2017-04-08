@@ -64,25 +64,26 @@ const getDataSuccess = (path, json, success, name) => {
 
 //手动调用获取数据的aciton
 export const getData = (path, postData, success, name) => {
-    let url = target + path + Tool.paramType(postData);
+    const target = process.env.NODE_ENV !== 'production' ?'' :'http://lolapi.games-cube.com'; //目标网站
+    let url = target + path;
     return dispatch => {
         dispatch(getDataStart(postData));
-        // return fetch(path, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'DAIWAN-API-TOKEN': token.user
-        //     },
-        //         mode: 'cors'
-        //     })
-        //     .then(response => response.json())
-        //     .then(json => dispatch(getDataSuccess(path, json, success, name)))
-        //     .catch(error => {
-        //         Toast.hide();
-        //         Toast.fail('网络连接错误！')
-        //         console.log(error);
-        //     })
-        return request.get(path)
+        return fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'DAIWAN-API-TOKEN': token.user
+            },
+                mode: 'cors'
+            })
+            .then(response => response.json())
+            .then(json => dispatch(getDataSuccess(path, json, success, name)))
+            .catch(error => {
+                Toast.hide();
+                Toast.fail('网络连接错误！')
+                console.log(error);
+            })
+        /*return request.get(path)
             .query(postData)
             .set('DAIWAN-API-TOKEN', token.user)
             .timeout(10000)
@@ -94,7 +95,7 @@ export const getData = (path, postData, success, name) => {
                 Toast.hide();
                 Toast.fail('网络连接错误！')
                 console.log(err);
-            })
+            })*/
     }
 
     
@@ -102,16 +103,16 @@ export const getData = (path, postData, success, name) => {
 
 //手动调用获取数据的aciton
 export const getVideoData = (path, postData, success, name) => {
-    let url = target + path + Tool.paramType(postData);
+    const target = process.env.NODE_ENV !== 'production' ?'' :'http://infoapi.games-cube.com'; //目标网站
+    let url = target + path;
     return dispatch => {
         dispatch(getDataStart(postData))
-        return fetch(path, {
+        return fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'DAIWAN-API-TOKEN': token.video
             },
-                timeout: 8000,
                 mode: 'cors'
             })
             .then(response => response.json())

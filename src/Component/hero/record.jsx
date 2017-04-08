@@ -42,7 +42,7 @@ export default class Record extends Component {
             let qquin = this.props.actions.searchClick.qquin,
                 vaid = this.props.actions.searchClick.area_id,
                 p = pageIndex++;
-            this.props.getData(`http://lolapi.games-cube.com/CombatList?qquin=${qquin}&vaid=${vaid}&p=${p}`, null, (data) => {
+            this.props.getData(`/CombatList?qquin=${qquin}&vaid=${vaid}&p=${p}`, null, (data) => {
                 if (data.code == 0 && data.data[0].result == 0 && data.data[0].battle_list.length > 0) {
                     let battle_list = data.data[0].battle_list;
                     let initData = this.state.initData;

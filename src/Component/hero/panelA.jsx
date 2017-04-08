@@ -18,7 +18,7 @@ export default class panelA extends Component{
         let {qquin} = this.props.actions.searchClick;
         let vaid = this.props.actions.searchClick.area_id;
         Toast.loading('加载中', 0);
-        this.props.getData(`http://lolapi.games-cube.com/CombatList?qquin=${qquin}&vaid=${vaid}`, null, res => {
+        this.props.getData(`/CombatList?qquin=${qquin}&vaid=${vaid}`, null, res => {
             if(res.code == 0){
                 this.setState({
                     getCombatList: res
@@ -29,7 +29,7 @@ export default class panelA extends Component{
             }
         }, 'getCombatList');
 
-        this.props.getData(`http://lolapi.games-cube.com/UserExtInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
+        this.props.getData(`/UserExtInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
                 if(res.code == 0){
                     this.setState({
                         getUserData: res
@@ -40,7 +40,7 @@ export default class panelA extends Component{
                 }
             }, 'getUserData');
 
-        this.props.getData(`http://lolapi.games-cube.com/BattleSummaryInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
+        this.props.getData(`/BattleSummaryInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
             if(res.code == 0){
                 this.setState({
                     battleSummaryInfo: res
@@ -51,7 +51,7 @@ export default class panelA extends Component{
             }
         }, 'battleSummaryInfo');
 
-        this.props.getData(`http://lolapi.games-cube.com/UserHotInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
+        this.props.getData(`/UserHotInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
             if(res.code == 0){
                 this.setState({
                     getUserHotInfo: res

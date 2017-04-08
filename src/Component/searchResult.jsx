@@ -39,7 +39,7 @@ class Main extends Component {
 
     getSearchResult(area) {
         return new Promise((resolve, reject) => {
-            this.props.getData(`http://lolapi.games-cube.com/UserArea?keyword=${this.props.location.query.keyword}`, null, res => {
+            this.props.getData(`/UserArea?keyword=${this.props.location.query.keyword}`, null, res => {
                 Toast.hide();
                 if(res.code == 0){
                     let searchData = res.data;
@@ -72,7 +72,7 @@ class Main extends Component {
 
     getAreaData() {
         return new Promise((resolve, reject) => {
-            this.props.getData('http://lolapi.games-cube.com/Area', null, res => {
+            this.props.getData('/Area', null, res => {
                 if(res.code == 0){
                     this.setState({
                         areaData: res.data

@@ -18,7 +18,7 @@ export default class PanelA extends Component{
         //http://cdn.tgp.qq.com/pallas/images/skins/original/79-000.jpg 皮肤背景
        //初始化数据
         Toast.loading('加载中', 0);
-        this.props.getData(`http://lolapi.games-cube.com/Free`, null, (data) => {
+        this.props.getData(`/Free`, null, (data) => {
             Toast.hide();
             this.setState({
                 getSummonerData: data

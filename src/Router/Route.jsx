@@ -7,21 +7,12 @@ import index from '../Component/index';
 class Roots extends Component {
     render() {
         return (
-            <ReactCSSTransitionGroup
-                component="div"
-                className="transition-wrapper"
-                transitionName="example"
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={500}>
-                {React.cloneElement(this.props.children, {
-                    key: this.props.location.pathname
-                })}
-            </ReactCSSTransitionGroup>
+            <div>{this.props.children}</div>
         );
     }
 }
 
-const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
+const history = process.env.NODE_ENV !== 'production' ? hashHistory : hashHistory;
 
 
 

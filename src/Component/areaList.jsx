@@ -24,7 +24,7 @@ class Main extends Component {
     componentDidMount() {
         if(_.isEmpty(this.state.areaList)){
             Toast.loading('加载中', 0);
-            this.props.getData('http://lolapi.games-cube.com/Area', null, res => {
+            this.props.getData('/Area', null, res => {
                 Toast.hide();
                 if (res.code == 0) {
                     this.setState({

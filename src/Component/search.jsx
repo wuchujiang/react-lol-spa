@@ -59,7 +59,7 @@ class Main extends Component {
         let areaCheck = this.props.actions.areaCheck;
         return (
             <section className="content">
-                <Header title="搜索"/>
+                <Header pathName="search" title="搜索"/>
                 <section className="search-page">
                     <div className="input-info">
                         <input value={this.props.actions.value} onChange={e => {this.changeHandle(e)}} placeholder="请输入召唤师名称" />

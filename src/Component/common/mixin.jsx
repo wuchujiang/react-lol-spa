@@ -27,6 +27,14 @@ export class Header extends Component {  //头部标题
     shouldComponentUpdate(nextProps, nextState) {
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     }
+
+    leftClick() {
+        if(this.props.pathName == 'search'){
+            this.context.router.push('/home');
+        }else{
+            window.history.back();
+        }
+    }
     
     render() {
         let {title, leftContent} = this.props;
@@ -38,9 +46,10 @@ export class Header extends Component {  //头部标题
         }else if (goback){
             goback = (<span className='head_goback left' onClick={() => window.history.back()}>返回</span>)
         }*/
+        
         return (
             <div className="nav-space">
-                <NavBar style={this.props.style} leftContent={leftContent} mode="dark" onLeftClick={() => window.history.back()}
+                <NavBar style={this.props.style} leftContent={leftContent} mode="dark" onLeftClick={e=>{this.leftClick();}}
                 rightContent={this.props.rightContent}
                 >{title}</NavBar>
             </div>
@@ -56,7 +65,6 @@ export class Tartab extends Component{
     }
 
     jumpPage(k) {
-        console.log(this.context);
         if(k == 1){
             this.context.router.push('/app')
         }else if(k==2){
@@ -123,5 +131,11 @@ export class Tartab extends Component{
 Tartab.contextTypes = {
     router: PropTypes.object
 }
+
+Header.contextTypes = {
+    router: PropTypes.object
+}
+
+
 
 
