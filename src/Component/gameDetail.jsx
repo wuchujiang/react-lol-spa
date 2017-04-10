@@ -122,7 +122,7 @@ class Main extends Component {
                                     <Accordion>    
                                             {k.map((_k, _i) => {
                                             let header = <div className="record-c-top">
-                                                    <Link to={{pathname:`/heroContent/${_k.champion_id}`,query:{name:"", id: _k.champion_id}}}>
+                                                    <Link to={{pathname:`summoner/heroContent/${_k.champion_id}`,query:{name:"", id: _k.champion_id}}}>
                                                         <div className="record-c-top-l">
                                                             <img onError={e => {this.imgError(e)}} src={`http://cdn.tgp.qq.com/pallas/images/champions_id/${_k.champion_id}.png`} />
                                                             {_k.qquin == qquin ? <img className="my-self" src={require('src/Style/img/desc_self.png')} /> : "" }

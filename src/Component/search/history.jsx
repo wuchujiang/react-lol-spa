@@ -73,3 +73,13 @@ export default class PanelTab extends Component {
         )
     }
 }
+
+// $.ajax({
+//     url: 'http://lolapi.games-cube.com/Free',
+//     beforeSend: function (request) {
+//         request.setRequestHeader("DAIWAN-API-TOKEN", "BDD5D-94434-4D8A4-BB4D8");
+//     },
+//     success: function (data) {
+//         console.log(data);
+//     }
+// })
