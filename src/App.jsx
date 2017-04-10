@@ -6,6 +6,7 @@ import route from './Router/Route'; //路由配置
 import store from './Redux/Store/Store';
 import './Config/Config.js';//引入默认配置
 import _ from 'lodash';
+import DevTools from 'src/devTool/';
 
 import './Style/app.scss';
 import './Style/search.scss';
@@ -25,7 +26,9 @@ store.subscribe(() => { //监听state变化
 
 render(
     <Provider store={store}>
-        {route}
+    	<div>
+			{route}
+    	</div>	
     </Provider>,
     document.body.appendChild(document.createElement('div'))
 );
