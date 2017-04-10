@@ -59,7 +59,7 @@ export default class PanelTab extends Component {
                                     platform="android"
                                     >
                                     <Link to={{
-                                        pathname: `/search/searchResult`, query: {
+                                        pathname: `search/searchResult`, query: {
                                             keyword: k.value,
                                             id: k.id
                                         }
