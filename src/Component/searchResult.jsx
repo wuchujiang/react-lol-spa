@@ -64,7 +64,9 @@ class Main extends Component {
                         })
                     }
                 }else{
-                    reject('系统异常')
+                    this.setState({
+                        requestState: true
+                    });
                 }
             }); 
         })

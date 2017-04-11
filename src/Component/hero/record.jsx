@@ -39,9 +39,9 @@ export default class Record extends Component {
                 scrollState: 2,
                 loadingTip: '正在加载中'
             });
-            let qquin = this.props.actions.searchClick.qquin,
-                vaid = this.props.actions.searchClick.area_id,
-                p = pageIndex++;
+            let  qquin = this.props.actions.searchClick.qquin || this.props.location.query.qquin;
+            let  vaid = this.props.actions.searchClick.area_id || this.props.location.query.vaid;
+            let  p = pageIndex++;
             this.props.getData(`/CombatList?qquin=${qquin}&vaid=${vaid}&p=${p}`, null, (data) => {
                 if (data.code == 0 && data.data[0].result == 0 && data.data[0].battle_list.length > 0) {
                     let battle_list = data.data[0].battle_list;
@@ -79,7 +79,14 @@ export default class Record extends Component {
                     {this.state.initData.map((k, i) => {
                         return (
                             <div  key={i} onClick={(e) => {this.clickHandle(k)}}>
-                            <Link to="hero/gameDetail" >
+                                <Link to={{
+                                    pathname: "hero/gameDetail",
+                                    query: {
+                                        qquin: this.props.location.query.qquin,
+                                        vaid: this.props.location.query.vaid,
+                                        game_id: k.game_id
+                                    }
+                                }} >
                                 <div className={className({win: k.win == 1, item: true})}>
                                     <div className="item-one">
                                             <img src={`http://cdn.tgp.qq.com/pallas/images/champions_id/${k.champion_id}.png`} />

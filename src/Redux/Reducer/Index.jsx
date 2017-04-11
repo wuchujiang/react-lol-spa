@@ -71,7 +71,7 @@ export const areaList = (state = {}, action = {}) => {
 }
 
 //分发所有的value
-export const value = (state = 'w何去何从', action = {}) => {
+export const value = (state = '', action = {}) => {
     switch (action.type) {
         case SEARCHVALUE:
             return action.data

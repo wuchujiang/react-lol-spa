@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { is, fromJS} from 'immutable';
 import {Tool} from '../Config/Tool';
 import {Header,template, Tartab} from './common/mixin';
-import { Button, Icon } from 'antd-mobile';
+import { Button, Icon, Toast } from 'antd-mobile';
 import Historical from './search/history';
 import _ from 'lodash'; 
 
@@ -41,18 +41,37 @@ class Main extends Component {
     }
 
     saveHistory() {
+        if (_.isEmpty(this.props.actions.value)) {
+            Toast.info('请输入查询名称', 2, null, false);
+            return false;
+        }
+        if (_.isEmpty(this.props.actions.areaCheck)) {
+            Toast.info('请选择大区名称', 2, null, false);
+            return false;
+        }
         let {id, name} = this.props.actions.areaCheck;
         this.props.historial({
             id,
             name,
             value: this.props.actions.value
         });
-             //回填本地搜索历史记录；
+        //回填本地搜索历史记录；
         let history = Tool.getLocationObj('history');
+        console.log(history);
         let historial = this.props.actions.historial;
-        let oldHistory = Tool.getLocationObj('history');        
+        console.log(historial);
+        
+        let oldHistory = Tool.getLocationObj('history');    
+        console.log(oldHistory);
+        
         //如果刷新后redux里面的数据为空，第一次回填时需要把缓存里面的数据合并到redux；
         Tool.setLocationObj('history', historial.length === 1 ? historial.concat(oldHistory) : historial);
+        this.context.router.push({
+            pathname: "/search/searchResult",
+            query: {
+                keyword: this.props.actions.value
+            }
+        })
     }
    
     render() {
@@ -62,7 +81,7 @@ class Main extends Component {
                 <Header pathName="search" title="搜索"/>
                 <section className="search-page">
                     <div className="input-info">
-                        <input value={this.props.actions.value} onChange={e => {this.changeHandle(e)}} placeholder="请输入召唤师名称" />
+                        <input placeholder="请输入游戏名称" value={this.props.actions.value} onChange={e => {this.changeHandle(e)}} placeholder="请输入召唤师名称" />
                     </div>
                     <div onClick={e=>{}} className="input-info">
                         <Link to="/search/areaList">
@@ -70,15 +89,7 @@ class Main extends Component {
                             <Icon type="down" />
                         </Link>
                     </div>
-                    
-                        <Link to={{
-                            pathname: `search/searchResult`,
-                            query: {
-                                keyword: this.props.actions.value
-                            }
-                        }}>
-                        <div onClick={e => { this.saveHistory();}} className="btn btn-complete am-button am-button-primary" type="primary"><span>搜索</span></div>
-                        </Link>
+                    <div onClick={e => { this.saveHistory();}} className="btn btn-complete am-button am-button-primary" type="primary"><span>搜索</span></div>
                 </section>
                 <Historical {...this.props} />
             </section>
@@ -95,3 +106,7 @@ export default template({
     component: Main,//接收数据的组件入口
     url: ''
 });
+
+Main.contextTypes = {
+    router: PropTypes.object
+}

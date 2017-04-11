@@ -15,8 +15,8 @@ export default class panelA extends Component{
         }
     }
     componentDidMount() {
-        let {qquin} = this.props.actions.searchClick;
-        let vaid = this.props.actions.searchClick.area_id;
+        let qquin = this.props.actions.searchClick.qquin || this.props.location.query.qquin;
+        let vaid = this.props.actions.searchClick.area_id || this.props.location.query.vaid;
         Toast.loading('加载中', 0);
         this.props.getData(`/CombatList?qquin=${qquin}&vaid=${vaid}`, null, res => {
             if(res.code == 0){
@@ -164,7 +164,7 @@ export default class panelA extends Component{
     render() {
 
         let {getUserHotInfo, getUserData, getCombatList, battleSummaryInfo} = this.state;
-        let {area} = this.props.actions.searchClick;
+        let area = this.props.actions.searchClick.area || this.props.location.query.area;
         let rankData = getUserData.data && getUserData.data.length > 0 ? getUserData.data : [];
         let userHotInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : {};
         let {name, icon, level, qquin} = userHotInfo;        

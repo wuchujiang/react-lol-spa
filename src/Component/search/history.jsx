@@ -44,12 +44,13 @@ export default class PanelTab extends Component {
 
     render() {
         let history = this.state.history;
+        let filterHistory = _.compact(history);//过滤空对象。
         return (
-            !_.isEmpty(history) ? <section className="search-history">
+            !_.isEmpty(filterHistory) ? <section className="search-history">
                 
                 <List renderHeader={<header><p>最近搜索</p><p onClick={e => { this.deleteHandle();}} className="delete">清空记录</p></header>} className="my-list">
                     {
-                        history.map((k, i) => {
+                        filterHistory.map((k, i) => {
                             return (
                                 <Item
                                     key={i}

@@ -23,7 +23,7 @@ class Main extends Component {
        
     }
     componentDidMount() {
-        let {qquin, vaid, game_id} = this.props.actions.gameFlag;
+        let {qquin, vaid, game_id} = this.props.location.query;
         Toast.loading('加载中', 0);
         this.props.getData(`/GameDetail?qquin=${qquin}&vaid=${vaid}&gameid=${game_id}`, null, (data) => {
             Toast.hide();

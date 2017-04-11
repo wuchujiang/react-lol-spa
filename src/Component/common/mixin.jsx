@@ -71,8 +71,20 @@ export class Tartab extends Component{
             this.context.router.push('/video')
         }else if(k == 3){
             this.context.router.push('/summoner')
-        }else if( k == 4){
-            this.context.router.push('/home')
+        } else if (k == 4) {
+            let userData = Tool.getLocationObj('userData');
+            if (!_.isEmpty(userData)) {
+                this.context.router.push({
+                    pathname: 'hero',
+                    query: {
+                        qquin: userData.qquin,
+                        vaid: userData.vaid,
+                        area: userData.area
+                    }
+                })
+            } else {
+                this.context.router.push('/home')
+            }
         }
     }
 
@@ -113,12 +125,8 @@ export class Tartab extends Component{
                 <TabBar.Item
                     selected={this.props.selected == 3}
                     onPress={e=>{this.jumpPage(4);}}
-                    icon={{
-                    uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg'
-                }}
-                    selectedIcon={{
-                    uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg'
-                }}
+                    icon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
+                    selectedIcon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}
                     title="我的"
                     key="我的"
                    >

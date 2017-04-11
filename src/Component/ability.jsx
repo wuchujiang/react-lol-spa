@@ -15,9 +15,25 @@ import className from 'classnames';
 class Main extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            getUserData: {},
+            battleSummaryInfo: {},
+            getUserHotInfo: {}
+        }
+    }
+
+    componentWillMount() {
+        this.setState({
+            getUserData: this.props.requestData.getUserData || {},
+            battleSummaryInfo: this.props.requestData.battleSummaryInfo || {},
+            getUserHotInfo: this.props.requestData.getUserHotInfo || {},
+        })
     }
 
     componentDidMount() {
+        if (_.isEmpty(this.state.getUserData)) {
+            this.initData();
+        }
         let progress = document.querySelectorAll('.item-progress');
         for (let i = 0; i < progress.length; i++){
             let label = progress[i].previousSibling.firstChild;
@@ -31,8 +47,46 @@ class Main extends Component {
         }
     }
 
+    initData() {
+        let qquin = this.props.actions.searchClick.qquin || this.props.location.query.qquin;
+        let vaid = this.props.actions.searchClick.area_id || this.props.location.query.vaid;
+        Toast.loading('加载中', 0);
+        this.props.getData(`/UserExtInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
+                if(res.code == 0){
+                    this.setState({
+                        getUserData: res
+                    })
+    
+                }else{
+                    Toast.fail('系统异常')
+                }
+            }, 'getUserData');
+
+        this.props.getData(`/BattleSummaryInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
+            if(res.code == 0){
+                this.setState({
+                    battleSummaryInfo: res
+                })
+
+            }else{
+                Toast.fail('系统异常')
+            }
+        }, 'battleSummaryInfo');
+
+        this.props.getData(`/UserHotInfo?qquin=${qquin}&vaid=${vaid}`, null, res => {
+            if(res.code == 0){
+                this.setState({
+                    getUserHotInfo: res
+                })
+
+            }else{
+                Toast.fail('系统异常')
+            }
+        }, 'getUserHotInfo');
+    }
+
     getTotalData() {
-        let battleSummaryInfo = this.props.requestData ? this.props.requestData.battleSummaryInfo : [];
+        let battleSummaryInfo = this.state.battleSummaryInfo || {};
         let summaryInfo = battleSummaryInfo.data && battleSummaryInfo.data.length > 0 ? battleSummaryInfo.data[0] : {};
         let batt_sum_info = summaryInfo.batt_sum_info || [];
         let total = {};
@@ -82,8 +136,8 @@ class Main extends Component {
     * 判断用户是否有排位赛记录
     */
     isRank() {
-        let getUserHotInfo = this.props.requestData ? this.props.requestData.getUserHotInfo : [];
-        let battleSummaryInfo = this.props.requestData ? this.props.requestData.battleSummaryInfo : [];
+        let getUserHotInfo = this.state.getUserHotInfo || {};
+        let battleSummaryInfo = this.state.battleSummaryInfo || {};
         
         let userHotInfo = getUserHotInfo.data && getUserHotInfo.data.length > 0 ? getUserHotInfo.data[0] : [];
         let summaryInfo = battleSummaryInfo.data && battleSummaryInfo.data.length > 0 ? battleSummaryInfo.data : {};
@@ -142,9 +196,9 @@ class Main extends Component {
     }
 
     render() {
-        let getUserData = this.props.requestData ? this.props.requestData.getUserData : {};
+        let getUserData = this.state.getUserData || {};
         let rankData = getUserData.data && getUserData.data.length > 0 ? getUserData.data : [];
-        let battleSummaryInfo = this.props.requestData ? this.props.requestData.battleSummaryInfo : [];
+        let battleSummaryInfo = this.state.battleSummaryInfo || {};
         let summaryInfoAll = battleSummaryInfo.data && battleSummaryInfo.data.length > 0 ? battleSummaryInfo.data : [];
         let summaryInfo = summaryInfoAll[0];
         let winNumber = this.getWinNumber() || {};

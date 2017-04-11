@@ -39,13 +39,7 @@ class Main extends Component {
                 <Header title="首页"/>
                 <Tartab selected="0"/>
                 <div className="app">
-                    <div className="search">
-                        <img src={require('src/Style/svg/app.svg')} />
-                    </div>
-                    <p>添加游戏角色，查战绩，看英雄！</p>
-                    <div className="btn-father">
-                        <Link to="search"><Button to="/search" onClick={() => {this.clickHandle();}} className="btn btn-search" type="primary">点击搜索</Button></Link>
-                    </div>
+                  
                 </div>
             </section>
         )
@@ -56,7 +50,7 @@ class Main extends Component {
 }
 
 export default template({
-    id: 'home',  //应用关联使用的redux
+    id: 'index',  //应用关联使用的redux
     component: Main,//接收数据的组件入口
     url: ''
 });

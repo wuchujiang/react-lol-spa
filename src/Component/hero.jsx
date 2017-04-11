@@ -4,7 +4,7 @@ import {History, Link } from 'react-router';
 import { is, fromJS} from 'immutable';
 import {Tool} from '../Config/Tool';
 import {Header,template, Tartab} from './common/mixin';
-import { Button, Icon } from 'antd-mobile';
+import { Icon , Modal} from 'antd-mobile';
 import PanelA from './hero/panelA';
 import PanelB from './hero/panelB';
 
@@ -45,20 +45,42 @@ class Main extends Component {
    
     handleChangeIndex (index) {
        this.setState({
-           index: index
+           index: index,
+           checkRightContent: false
        })
     } 
 
     addDefault() {
-        // let {qquin, icon_id, name, area, level} = this.props.actions.searchClick;
-        // let userData = {
-        //     qquin,
-        //     icon_id,
-        //     name,
-        //     area,
-        //     level,
-        //     vaid: this.props.actions.searchClick.area_id
-        // }
+        let {qquin, icon_id, name, area, level} = this.props.actions.searchClick;
+        let userData = {
+            qquin,
+            area,
+            vaid: this.props.actions.searchClick.area_id
+        }
+         Modal.alert('默认角色', '确定要设为默认吗???', [
+            { text: '取消'},
+            {
+                text: '确定', onPress: () => { 
+                    Tool.setLocationObj('userData', userData);
+                    this.setState({
+                        checkRightContent: true
+                    })
+            }, style: { fontWeight: 'bold' } },
+        ])
+    }
+
+    getRightContent() {
+        let userData = Tool.getLocationObj('userData');
+        let qquin = this.props.location.query.qquin;
+        let rightContent;
+        
+        if (qquin) {
+            rightContent = <Icon key="1" type="ellipsis" />;
+        } else {
+            rightContent = <span onClick={e => { this.addDefault(); } }>添加默认</span>;
+        }
+
+        return rightContent;
     }
 
     render() {
@@ -66,7 +88,8 @@ class Main extends Component {
         let index = this.state.index;
         return (
             <section>
-                <Header title="英雄战绩" rightContent={<span onClick={e => { this.addDefault();}}>添加默认</span>} />
+                <Header title="英雄战绩" rightContent={!this.state.checkRightContent ? this.getRightContent() : <Icon key="1" type="ellipsis" />} />
+                {!_.isEmpty(this.props.location.query.qquin) && <Tartab selected="3"/>}
                 <nav className="small-bar">
                     <ul>
                         <li className={className({active: index === 0})} onClick={() => {this.handleChangeIndex(0)}}>战绩</li>
