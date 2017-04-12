@@ -82,6 +82,17 @@ const player = (location, cb) => {
     },'player')
 }
 
+const anchors = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/anchors').default)
+    },'anchors')
+}
+
+const anchorInfo = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/anchorInfo').default)
+    },'anchorInfo')
+}
 
 const RouteConfig = (
     <Router history={history}>
@@ -103,6 +114,8 @@ const RouteConfig = (
             </Route>
             <Route path="video" component={Roots} >
                 <IndexRoute getComponent={video} />//首页
+                <Route path="anchors" getComponent={anchors} />
+                <Route path="anchorInfo" getComponent={anchorInfo} />
                 <Route path="player" getComponent={player} />
             </Route>
             <Route path="home" getComponent={home} />

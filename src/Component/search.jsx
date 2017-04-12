@@ -57,12 +57,9 @@ class Main extends Component {
         });
         //回填本地搜索历史记录；
         let history = Tool.getLocationObj('history');
-        console.log(history);
         let historial = this.props.actions.historial;
-        console.log(historial);
         
         let oldHistory = Tool.getLocationObj('history');    
-        console.log(oldHistory);
         
         //如果刷新后redux里面的数据为空，第一次回填时需要把缓存里面的数据合并到redux；
         Tool.setLocationObj('history', historial.length === 1 ? historial.concat(oldHistory) : historial);

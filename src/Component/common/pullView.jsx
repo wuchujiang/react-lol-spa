@@ -113,7 +113,7 @@ export default class PullView extends Component {
     _onScroll() {
         const {container, props: {toBottom, onScrollToBottom, onScrollUp, onScrollDown, scrollElement}} = this;
         const scrollTop = Math.ceil(container.scrollTop);
-        const clientHeight = scrollElement.clientHeight || window.innerHeight;
+        const clientHeight = scrollElement ? scrollElement.clientHeight : window.innerHeight;
         const scrollHeight = container.scrollHeight;
         // 当距离底部toBottom距离，触发onScrollToBottom
         if (scrollTop + clientHeight + toBottom >= scrollHeight) {

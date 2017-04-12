@@ -9,6 +9,7 @@ import PullView from './common/pullView';
 import {Header,template, Tartab} from './common/mixin';
 import { Button, Icon, Toast } from 'antd-mobile';
 import _ from 'lodash';
+import Anchor from './video/anchor';
 import LazyLoad from 'react-lazyload';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 moment.locale('zh-cn')
@@ -100,6 +101,7 @@ class Main extends Component {
             <section>
                 <Header title="视频" />
                 <Tartab selected="1" />
+                <Anchor {...this.props} />
                 <PullView onScrollToBottom={() => {this.scrollBottom()}}>
                     <ul className="video-page">
                         {
