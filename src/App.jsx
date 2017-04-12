@@ -18,6 +18,8 @@ import './Style/summoner.scss';
 import './Style/heroContent.scss';
 import './Style/video.scss';
 import './Style/anchors.scss';
+import './Style/payMent.scss';
+
 
 
 

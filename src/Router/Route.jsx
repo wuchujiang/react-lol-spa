@@ -94,6 +94,12 @@ const anchorInfo = (location, cb) => {
     },'anchorInfo')
 }
 
+const payMent = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/payMent').default)
+    },'payMent')
+}
+
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
@@ -119,6 +125,7 @@ const RouteConfig = (
                 <Route path="player" getComponent={player} />
             </Route>
             <Route path="home" getComponent={home} />
+            <Route path="payMent" getComponent={payMent} />
             <Redirect from='*' to='/' />
         </Route>
     </Router>
