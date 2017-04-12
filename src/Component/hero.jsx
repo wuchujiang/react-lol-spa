@@ -25,7 +25,12 @@ class Main extends Component {
        
     }
     componentDidMount() {
-   
+        let details = document.querySelector('.details');
+        let navSpace = document.querySelector('.nav-space');
+        let smallBar = document.querySelector('.small-bar');
+        let tablist = document.querySelector('.am-tab-bar-bar');
+        details.style.height = (window.innerHeight - navSpace.clientHeight- tablist.clientHeight - smallBar.clientHeight) + 'px';
+
     }
 
     changeHandle(e) {
@@ -96,7 +101,7 @@ class Main extends Component {
                         <li className={className({active: index === 1})} onClick={() => {this.handleChangeIndex(1)}}>能力</li>
                     </ul>
                 </nav>
-                <SwipeableViews resistance  className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
+                <SwipeableViews resistance containerStyle={{height: '100%'}}   className="details" index={index} onChangeIndex={index => {this.handleChangeIndex(index)}}>
                     <PanelA {...this.props} />
                     <PanelB />
                 </SwipeableViews>

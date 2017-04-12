@@ -19,7 +19,8 @@ export default class PullView extends Component {
         this.endY = undefined; // 记录pull当前位置
         this.status = 0; // 0. 未touchstart 1.pulling但未达到pulledPauseY 2.pulling达到pulledPauseY 3.进入pause状态
         this.lastScrollTop = undefined; // 上次scrollTop的位置，用于和当前滚动位置比较，判断是向上滚还是向下滚
-        this.container = document.body; // pull的对象  
+        this.container = this.props.container || document.body; // pull的对象 
+        this.scrollElement = this.props.scrollElement || window;
     }
 
     componentWillReceiveProps({toStopPause, onPauseStopped}) {
@@ -34,7 +35,7 @@ export default class PullView extends Component {
     }
 
     componentDidMount() {
-        const {props: {mountScrollTop}, container} = this;
+        const {props: {mountScrollTop}, container, scrollElement} = this;
 
         // 滚动到初始位置
         container.scrollTop = mountScrollTop;
@@ -47,11 +48,12 @@ export default class PullView extends Component {
         container.addEventListener('mousedown', this._onTouchStart);
         container.addEventListener('mousemove', this._onTouchMove, { passive: false });
         container.addEventListener('mouseup', this._onTouchEnd);
-        window.addEventListener('scroll', this._onScroll);
+        
+        scrollElement.addEventListener('scroll', this._onScroll);
     }
 
     componentWillUnmount() {
-        const {props: {onPullViewUnmount}, container} = this;
+        const {props: {onPullViewUnmount}, container, scrollElement} = this;
 
         onPullViewUnmount && onPullViewUnmount(container.scrollTop);
 
@@ -62,7 +64,7 @@ export default class PullView extends Component {
         container.removeEventListener('mousedown', this._onTouchStart);
         container.removeEventListener('mousemove', this._onTouchMove);
         container.removeEventListener('mouseup', this._onTouchEnd);
-        window.removeEventListener('scroll', this._onScroll);
+        scrollElement.removeEventListener('scroll', this._onScroll);
     }
 
     _onTouchStart() {
@@ -109,11 +111,10 @@ export default class PullView extends Component {
     }
 
     _onScroll() {
-        const {container, props: {toBottom, onScrollToBottom, onScrollUp, onScrollDown}} = this;
+        const {container, props: {toBottom, onScrollToBottom, onScrollUp, onScrollDown, scrollElement}} = this;
         const scrollTop = Math.ceil(container.scrollTop);
-        const clientHeight = window.innerHeight;
+        const clientHeight = scrollElement.clientHeight || window.innerHeight;
         const scrollHeight = container.scrollHeight;
-
         // 当距离底部toBottom距离，触发onScrollToBottom
         if (scrollTop + clientHeight + toBottom >= scrollHeight) {
             onScrollToBottom && onScrollToBottom();
@@ -228,7 +229,7 @@ PullView.propTypes = {
 
 PullView.defaultProps = {
     scaleY: 0.2,
-    toBottom: 0,
+    toBottom: 50,
     pulledPauseY: 40,
     mountScrollTop: 0,
     toStopPause: false,

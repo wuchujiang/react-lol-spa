@@ -75,7 +75,7 @@ export default class Record extends Component {
 
         return(
             <div className="record-item">
-                <PullView onScrollToBottom={() => {this.scrollBottom()}}>
+                <PullView container={document.querySelector('.react-swipeable-view-container > div')} scrollElement={document.querySelector('.react-swipeable-view-container > div') || window} onScrollToBottom={() => {this.scrollBottom()}}>
                     {this.state.initData.map((k, i) => {
                         return (
                             <div  key={i} onClick={(e) => {this.clickHandle(k)}}>
