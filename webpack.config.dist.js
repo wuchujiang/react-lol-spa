@@ -29,7 +29,9 @@ module.exports = {
             'redux',
             'react-redux',
             'redux-thunk',
-            'immutable'
+            'immutable',
+            'lodash',
+            'moment'
         ]
     },
     output: {

@@ -7,7 +7,7 @@ import moment from 'moment';
 import PullView from './common/pullView';
 
 import {Header,template, Tartab} from './common/mixin';
-import { Button, Icon, Toast } from 'antd-mobile';
+import { Icon, Toast } from 'antd-mobile';
 import _ from 'lodash';
 import Anchor from './video/anchor';
 import LazyLoad from 'react-lazyload';
