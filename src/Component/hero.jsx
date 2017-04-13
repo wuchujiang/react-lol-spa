@@ -29,7 +29,7 @@ class Main extends Component {
         let navSpace = document.querySelector('.nav-space');
         let smallBar = document.querySelector('.small-bar');
         let tablist = document.querySelector('.am-tab-bar-bar');
-        details.style.height = (window.innerHeight - navSpace.clientHeight- tablist.clientHeight - smallBar.clientHeight) + 'px';
+        details.style.height = (window.innerHeight - navSpace.clientHeight- (tablist !== null ? tablist.clientHeight : 0 ) - smallBar.clientHeight) + 'px';
 
     }
 

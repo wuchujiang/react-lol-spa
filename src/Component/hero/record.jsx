@@ -82,8 +82,8 @@ export default class Record extends Component {
                                 <Link to={{
                                     pathname: "hero/gameDetail",
                                     query: {
-                                        qquin: this.props.location.query.qquin,
-                                        vaid: this.props.location.query.vaid,
+                                        qquin: this.props.actions.searchClick.qquin || this.props.location.query.qquin,
+                                        vaid: this.props.actions.searchClick.area_id || this.props.location.query.vaid,
                                         game_id: k.game_id
                                     }
                                 }} >

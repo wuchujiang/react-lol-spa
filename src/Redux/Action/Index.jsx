@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
 import request from 'superagent';
 import {Toast} from 'antd-mobile';
 import {target} from '../../Config/Config'

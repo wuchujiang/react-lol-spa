@@ -36,7 +36,7 @@ class Main extends Component {
             });
         } else {
             Toast.loading('加载中...', 0);
-            this.props.getVideoData(`http://infoapi.games-cube.com/GetNewstVideos?p=${1}`, null, (data) => {
+            this.props.getVideoData(`/GetNewstVideos?p=${1}`, null, (data) => {
                 Toast.hide();
                 this.setState({
                     initData: data.data
@@ -76,7 +76,7 @@ class Main extends Component {
                 loadingTip: '正在加载中'
             });
             let p = pageIndex++;
-            this.props.getVideoData(`http://infoapi.games-cube.com/GetNewstVideos?p=${p}`, null, (data) => {
+            this.props.getVideoData(`/GetNewstVideos?p=${p}`, null, (data) => {
                 if (data.code == 0 && data.data.length > 0) {
                     let initData = this.state.initData;
                     this.setState({

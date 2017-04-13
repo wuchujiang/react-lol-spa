@@ -15,14 +15,14 @@ export default class PanelC extends Component {
 
 	componentDidMount() { 
 		Toast.loading('加载中', 0);
-        this.props.getVideoData(`http://infoapi.games-cube.com/GetHeroVideos?hero=${this.props.actions.summonerClick.keys}&p=${1}`, null, (data) => {
+        this.props.getVideoData(`/GetHeroVideos?hero=${this.props.actions.summonerClick.keys}&p=${1}`, null, (data) => {
             Toast.hide();
             this.setState({
                 getHeroVideo: data
             })
         });
 
-		this.props.getVideoData(`http://infoapi.games-cube.com/GetAuthors`, null, (data) => {
+		this.props.getVideoData(`/GetAuthors`, null, (data) => {
             Toast.hide();
             this.setState({
                 getAuthor: data
