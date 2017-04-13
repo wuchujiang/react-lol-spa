@@ -30,8 +30,8 @@ module.exports = {
             'react-redux',
             'redux-thunk',
             'immutable',
-            'lodash',
-            'moment'
+            'moment',
+            'react-swipeable-views'
         ]
     },
     output: {

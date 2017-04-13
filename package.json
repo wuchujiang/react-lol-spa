@@ -1,12 +1,12 @@
 {
-  "name": "pxq",
+  "name": "lol",
   "version": "1.0.1",
   "description": "react-demo",
   "main": "server.js",
   "scripts": {
     "dev": "node server.js",
     "hot": "node server_hot.js",
-    "dist": "webpack --config webpack.config.dist.js --progress --colors --watch -p"
+    "dist": "webpack --config webpack.config.dist.js --progress --profile --colors --watch -p"
   },
   "repository": {
     "type": "github",
