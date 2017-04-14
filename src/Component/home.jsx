@@ -38,7 +38,7 @@ class Main extends Component {
         return (
             <section>
                 <Header title="首页"/>
-                <Tartab selected="0"/>
+                <Tartab selected="3"/>
                 <div className="app">
                     <div className="search">
                         <img src={require('src/Style/img/battle.png')} />

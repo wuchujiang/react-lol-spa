@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import pureRender from 'pure-render-decorator';
-import {History, Link } from 'react-router';
+import {Link } from 'react-router';
 import { connect } from 'react-redux';
 import { is, fromJS} from 'immutable';
 import { Tool } from '../Config/Tool';
@@ -100,6 +99,15 @@ class Main extends Component {
         }
         return str;
     }
+
+    jumpPage(k) {
+        this.context.router.push({
+            pathname: '/news',
+            query: {
+                src: encodeURIComponent(k.article_url)
+            }
+        })
+    }
    
     render() {
         let initData = this.state.initData;
@@ -115,7 +123,7 @@ class Main extends Component {
                                 return (
                                     <Item
                                         key={i}    
-                                        onClick={() => {}}
+                                        onClick={() => { this.jumpPage(k);}}
                                         platform="android">
                                         <div className="news-item">
                                             <div className="news-img">
@@ -140,7 +148,7 @@ class Main extends Component {
                                             </div>
                                             <Icon className="icon-right" type="right" />
                                         </div>
-                                        </Item> 
+                                    </Item> 
                                 )
                         })}    
                            
@@ -160,6 +168,10 @@ class Main extends Component {
     
     componentWillUnmount() {
     }
+}
+
+Main.contextTypes = {
+    router: PropTypes.object
 }
 
 export default template({

@@ -96,8 +96,8 @@ export class Tartab extends Component{
                 barTintColor="white"
                 >
                 <TabBar.Item
-                    title="搜索"
-                    key="搜索"
+                    title="资讯"
+                    key="资讯"
                     onPress={e=>{this.jumpPage(1);}}
                     selected={this.props.selected == 0}
                     icon={< div style = {{ width: '0.44rem', height: '0.44rem', background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center / 0.42rem 0.42rem no-repeat' }}/>}

@@ -77,8 +77,8 @@ class Main extends Component {
         let index = this.state.index;
         return (
             <section>
-                <Header style={{background: 'transparent', color: '#d0ac66'}} title={this.props.actions.summonerClick.name}/>
-                <div className='champion-detail' style={{backgroundImage: `url(http://cdn.tgp.qq.com/pallas/images/skins/original/${this.props.actions.summonerClick.keys}-000.jpg)`}}>
+                <Header style={{background: 'transparent', color: '#d0ac66'}} title={this.props.actions.summonerClick.name}/> 
+                <div className='champion-detail' style={{backgroundImage: `url(http://cdn.tgp.qq.com/pallas/images/skins/original/${this.props.actions.summonerClick.keys || this.props.location.query.id }-000.jpg)`}}>
                     <div className="nav-spaces"></div>       
                     <h4>{championDetail.title}</h4>
                     <p className="championDetailTags">{

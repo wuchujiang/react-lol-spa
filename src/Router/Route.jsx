@@ -94,10 +94,17 @@ const anchorInfo = (location, cb) => {
     },'anchorInfo')
 }
 
+const news = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/news').default)
+    },'news')
+}
+
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
             <IndexRoute component={index} />//首页
+            <Route path="news" getComponent={news} />
             <Route path="summoner" component={Roots} >
                 <IndexRoute getComponent={summoner} />//首页
                 <Route path="heroContent" getComponent={heroContent} />
