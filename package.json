@@ -4,8 +4,8 @@
   "description": "react-demo",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "hot": "node server_hot.js",
+    "dev": "node server.js --progress --profile --colors --watch -p",
+    "hot": "node server_hot.js --progress --profile --colors --watch -p",
     "dist": "webpack --config webpack.config.dist.js --progress --profile --colors --watch -p"
   },
   "repository": {

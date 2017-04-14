@@ -26,7 +26,7 @@ class Main extends Component {
     }
     componentDidMount() {
         Toast.loading('加载中', 0);
-        this.props.getData(`/GetChampionDetail?champion_id=${this.props.actions.summonerClick.keys}`, null, (data) => {
+        this.props.getData(`/GetChampionDetail?champion_id=${this.props.actions.summonerClick.keys || this.props.location.query.id}`, null, (data) => {
             Toast.hide();
             this.setState({
                 getHeroContent: data

@@ -15,7 +15,7 @@ export default class PanelC extends Component {
 
 	componentDidMount() { 
 		Toast.loading('加载中', 0);
-        this.props.getVideoData(`/GetHeroVideos?hero=${this.props.actions.summonerClick.keys}&p=${1}`, null, (data) => {
+        this.props.getVideoData(`/GetHeroVideos?hero=${this.props.actions.summonerClick.keys || this.props.location.query.id}&p=${1}`, null, (data) => {
             Toast.hide();
             this.setState({
                 getHeroVideo: data

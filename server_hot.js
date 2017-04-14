@@ -23,12 +23,23 @@ app.use(/\/(Free|Area|UserArea|UserHotInfo|ChampionRank|GetChampionDetail|UserEx
     changeOrigin: true
 }));
 
-app.use(/\/(GetAuthors|GetAuthorVideos|GetNewstVideos|GetHeroVideoshero|FindVideos)/, proxyMiddleware({
+app.use(/\/(GetAuthors|GetAuthorVideos|GetNewstVideos|GetHeroVideos|FindVideos)/, proxyMiddleware({
     target: 'http://infoapi.games-cube.com',
     changeOrigin: true
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
+
+
+//转发接口
+app.get('/getNews', function (req, res) {
+    var superagent = require('superagent');
+    var sreq = superagent.get(`http://qt.qq.com/php_cgi/news/php/varcache_getnews.php?id=12&page=${req.query.page}&plat=android&version=9724`);
+    sreq.pipe(res);
+    sreq.on('end', function(){
+        //console.log(res);
+    });
+});
 
 //将其他路由，全部返回index.html
 app.get('*', function(req, res) {

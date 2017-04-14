@@ -12,7 +12,7 @@ import _ from 'lodash';
 import Anchor from './video/anchor';
 import LazyLoad from 'react-lazyload';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-moment.locale('zh-cn')
+moment.locale('zh-cn');
 let pageIndex = 1;
 class Main extends Component {
     constructor() {

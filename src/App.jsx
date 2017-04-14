@@ -8,6 +8,7 @@ import './Config/Config.js';//引入默认配置
 import _ from 'lodash';
 
 import './Style/app.scss';
+import './Style/home.scss';
 import './Style/search.scss';
 import './Style/public.scss';
 import './Style/areaList.scss';

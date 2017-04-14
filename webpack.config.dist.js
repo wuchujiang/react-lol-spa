@@ -22,7 +22,7 @@ var svgDirs = [
 module.exports = {
     entry: {
         app: APP_FILE,
-        common: [
+        common: [  //打包公共组件
             "react",
             'react-dom',
             'react-router',
@@ -86,11 +86,13 @@ module.exports = {
                 NODE_ENV: JSON.stringify('production') //定义生产环境
             }
         }),
-        new CleanWebpackPlugin([BUILD_PATH], {
+        new CleanWebpackPlugin([BUILD_PATH], {  //清空build目录
             root: ROOT_PATH,
             verbose: true,
             dry: false
         }),
+
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),
 
         new HtmlWebpackPlugin({  //根据模板插入css/js等生成最终HTML
             filename: '../index.html', //生成的html存放路径，相对于 path
@@ -114,16 +116,15 @@ module.exports = {
         modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
         extensions: ['', '.web.js', '.js', '.jsx', '.css', '.less', '.scss', '.json'], //后缀名自动补全
         root: [path.resolve('src'), __dirname]
-
     },
     babel: {
         plugins: [
-            ['import', { libraryName: 'antd-mobile', style: 'css' }]
+            ['import', { libraryName: 'antd-mobile', style: 'css' }]  //配置antd-mobile组件样式打包
         ]
     },
     postcss: [
         pxtorem({
-            rootValue: 100,
+            rootValue: 100,   //px转rem
             propWhiteList: [],
         })
     ]

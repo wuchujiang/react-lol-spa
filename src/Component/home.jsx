@@ -16,6 +16,7 @@ class Main extends Component {
        
     }
     componentDidMount() {
+       
     }
 
     shouldComponentUpdate(nextProps, nextState) {

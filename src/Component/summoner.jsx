@@ -59,15 +59,11 @@ class Main extends Component {
                 <nav className="small-bar">
                     <ul>
                         <li className={className({ active: index === 0 })} onClick={() => { this.handleChangeIndex(0) } }>周免英雄</li>
-                        <li className={className({ active: index === 1 })} onClick={() => { this.handleChangeIndex(1) } }>我的英雄</li>
-                        <li className={className({ active: index === 2 })} onClick={() => { this.handleChangeIndex(2) } }>全部英雄</li>
+                        <li className={className({ active: index === 1 })} onClick={() => { this.handleChangeIndex(2) } }>全部英雄</li>
                     </ul>
                 </nav>
                 <SwipeableViews resistance containerStyle={{height: '100%'}} className="details" index={index} onChangeIndex={index => { this.handleChangeIndex(index) } }>
                        <PanelA {...this.props} />
-                        <div>
-                        2323
-                        </div>
                        <PanelC {...this.props} />
                 </SwipeableViews>
             </section>
