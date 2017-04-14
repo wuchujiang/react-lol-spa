@@ -26,17 +26,6 @@ react + redux + immutable + less + scss + ES6/7 + webpack + fetch + react-router
 
 
 
-
-
-## 演示
-[demo](http://dev.fe.ptdev.cn/pxq/)（请用chrome的手机模式预览）
-   
-### 移动端扫描下方二维码
-![](https://github.com/bailicangdu/pxq/blob/master/src/images/demo.png)
-
-
-
-
 # 个人感悟
 
 ## 做React需要会什么？
