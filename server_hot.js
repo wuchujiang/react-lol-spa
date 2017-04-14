@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var express = require('express');
 var config = require('./webpack.config.hot');
+var path = require('path');
 var proxyMiddleware = require('http-proxy-middleware')
 
 var app = express();
@@ -30,6 +31,7 @@ app.use(/\/(GetAuthors|GetAuthorVideos|GetNewstVideos|GetHeroVideos|FindVideos)/
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+app.use(express.static(path.join(__dirname, 'build')));
 
 //转发接口
 app.get('/getNews', function (req, res) {
