@@ -64,7 +64,7 @@ const getDataSuccess = (path, json, success, name) => {
 
 //手动调用获取数据的aciton
 export const getData = (path, postData, success, name) => {
-    const target = process.env.NODE_ENV !== 'production' ?'' :'http://lolapi.games-cube.com'; //目标网站
+    const target = process.env.NODE_ENV !== 'production' ?'' :''; //目标网站
     let url = target + path;
     return dispatch => {
         dispatch(getDataStart(postData));
@@ -103,7 +103,7 @@ export const getData = (path, postData, success, name) => {
 
 //手动调用获取数据的aciton
 export const getVideoData = (path, postData, success, name) => {
-    const target = process.env.NODE_ENV !== 'production' ?'' :'http://infoapi.games-cube.com'; //目标网站
+    const target = process.env.NODE_ENV !== 'production' ?'' :''; //目标网站
     let url = target + path;
     return dispatch => {
         dispatch(getDataStart(postData))
