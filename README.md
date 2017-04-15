@@ -25,26 +25,20 @@ react + redux + immutable + less + scss + ES6/7 + webpack + fetch + react-router
 ```
 
 ## 演示
-[demo](123.207.20.202:8088)（请用chrome的手机模式预览）
+[demo](http://123.207.20.202:8088)（请用chrome的手机模式预览）
    
 ### 移动端扫描下方二维码
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/code.png)
-
+![](http://i1.piimg.com/567571/66cd864a1af2db0f.png)
 
 ## 效果图
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/1.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/2.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/3.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/4.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/5.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/6.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/7.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/8.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/9.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/10.png)
-![](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/11.png)
-
-
-
-
-
+![](http://i4.buimg.com/567571/03c016ef80dc0d5e.png)
+![](http://i1.piimg.com/567571/230226ae9206b253.png)
+![](http://i1.piimg.com/567571/33fb0e38bd00318b.png)
+![](http://i2.muimg.com/567571/bee72c331169780b.png)
+![](http://i2.muimg.com/567571/5b001b7710a8b22d.png)
+![](http://i4.buimg.com/567571/d759556f2684557b.png)
+![](http://i1.piimg.com/567571/4fc28bd8ad543fd1.png)
+![](http://i2.muimg.com/567571/0fb6447c73e04ce5.png)
+![](http://i2.muimg.com/567571/062be6237bd71f18.png)
+![](http://i4.buimg.com/567571/341f78ce416db761.png)
+![](http://i4.buimg.com/567571/28f75bbc495f3286.png)
