@@ -26,7 +26,7 @@ react + redux + immutable + less + scss + ES6/7 + webpack + fetch + react-router
 
 ## 效果图
 ```
- ![1](https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/1.png)
+ !(https://raw.githubusercontent.com/wuchujiang/react-lol-spa/master/screen/1.png)
  
 
 
