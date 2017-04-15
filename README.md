@@ -41,4 +41,3 @@ react + redux + immutable + less + scss + ES6/7 + webpack + fetch + react-router
 ![](http://i2.muimg.com/567571/0fb6447c73e04ce5.png)
 ![](http://i2.muimg.com/567571/062be6237bd71f18.png)
 ![](http://i4.buimg.com/567571/341f78ce416db761.png)
-![](http://i4.buimg.com/567571/28f75bbc495f3286.png)
