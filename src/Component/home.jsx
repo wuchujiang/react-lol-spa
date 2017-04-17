@@ -37,7 +37,7 @@ class Main extends Component {
     render() {
         return (
             <section>
-                <Header title="首页"/>
+                <Header title="我的"/>
                 <Tartab selected="3"/>
                 <div className="app">
                     <div className="search">

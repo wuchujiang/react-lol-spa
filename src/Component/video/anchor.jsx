@@ -34,7 +34,14 @@ export default class Anchor extends Component{
                     {anchor.map((k, i) => {
                         return (
                             <li className="anchor-item" key={i}>
-                                <Link>
+                                <Link to={{
+                                        pathname: `video/anchorInfo`, query: {
+                                            id: k.id,
+                                            name: k.name,
+                                            content: k.desc,
+                                            img: k.img
+                                        }
+                                    }}>
                                     <div className="anchor-img">
                                         <img src={k.img} alt=""/>
                                     </div>
