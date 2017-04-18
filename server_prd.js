@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+﻿var webpack = require('webpack');
 var express = require('express');
 var path = require('path');
 var proxyMiddleware = require('http-proxy-middleware')
@@ -35,6 +35,6 @@ app.get('*', function(req, res) {
     res.sendFile(__dirname + '/index.html')
 });
 
-app.listen(8088, function() {
+app.listen(process.env.PORT || 8088, function() {
     console.log('正常打开8088端口')
 });
