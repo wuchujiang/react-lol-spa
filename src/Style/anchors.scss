@@ -1,0 +1,27 @@
+.anchors-link{
+    display: block;
+    border-bottom: 1px solid #ddd;
+}
+
+.anthors-wrap{
+    display: flex;
+    align-items: center;
+    .anthors-img{
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    p{
+        flex: 1;
+        padding-left: 30px;
+    }
+    span{
+        font-size: 24px;
+        color: #999;
+    }
+}

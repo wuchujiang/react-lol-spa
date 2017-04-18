@@ -1,0 +1,181 @@
+.game-detail {
+    background-color: #f5f5f5;
+    section {
+        margin-top: 30px;
+    }
+    header {
+        height: 70px;
+        span {
+            padding-left: 10px;
+            color: #111;
+        }
+        .header-fixed {
+            position: fixed;
+            width: 100%;
+            left: 0;
+            top: 90px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            height: 70px;
+            line-height: 70px;
+            background-color: #fff;
+            color: #666;
+            font-size: 28px;
+            z-index: 9000;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+    .win-header {
+        display: flex;
+        justify-content: space-between;
+        height: 60px;
+        margin: 20px 0;
+        .total-data {
+            color: limegreen;
+            padding-right: 20px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 24px;
+        }
+        .win-type {
+            width: 170px;
+            padding-left: 30px;
+            font-size: 28px;
+            height: 60px;
+            line-height: 60px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            &:before {
+                content: "";
+                position: absolute;
+                left: -20px;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transform: skew(25deg, 0);
+                background-color: limegreen;
+                z-index: -1;
+            }
+        }
+    }
+    .lose {
+        .win-type {
+            .total-data {
+                color: orange;
+            }
+            &:before {
+                background-color: orange;
+            }
+        }
+        .record-c-top-l {
+            border-color: orange;
+            p {
+                color: orange;
+            }
+        }
+        .total-data {
+            color: orange;
+        }
+    }
+}
+
+.record-c-top {
+    display: flex;
+    padding: 20px;
+    .record-c-top-l {
+        margin-right: 18px;
+        border: 1px solid limegreen;
+        position: relative;
+        img:not(.my-self) {
+            width: 120px;
+            height: 120px;
+            background-color: #eee;
+        }
+        .my-self {
+            position: absolute;
+            right: 0;
+            top: 80px;
+            width: 40px;
+            height: 40px;
+        }
+        p {
+            text-align: center;
+            color: limegreen;
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+    .record-c-top-m {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
+        h5 {
+            font-size: 30px;
+        }
+        .my-self {
+            color: red;
+        }
+        .total-mid {
+            font-size: 26px;
+        }
+    }
+    .record-c-top-r {
+        i {
+            padding: 14px;
+            font-size: 28px;
+        }
+    }
+    .equipment-img {
+        img,
+        span {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+        span {
+            border: 1px solid #ccc;
+        }
+    }
+}
+
+.record-c-bot {
+    background-color: #eee;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    p {
+        color: #666;
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        span {
+            color: #111;
+            padding-left: 16px;
+        }
+    }
+    .colum {
+        display: flex;
+        width: 100%;
+        p {
+            flex: 1;
+        }
+    }
+}
+
+.record-content {
+    li {
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+#accordion-reset .am-accordion-header {
+    height: initial;
+    line-height: initial;
+    font-size: initial;
+    padding: 0;
+}

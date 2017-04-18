@@ -1,0 +1,252 @@
+p {
+    font-size: 26px;
+}
+
+.heroContent {
+    .am-navbar {
+        background-color: rgba(0, 0, 0, 0);
+        color: #d3bf8d;
+    }
+}
+
+.details {
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+.nav-spaces {
+    height: .9rem;
+}
+
+.champion-detail {
+    width: 100%;
+    height: 0;
+    padding: 0 30px 51.02041% 30px;
+    margin-top: -.9rem;
+    background-size: contain;
+    color: #fff;
+    .championDetailTags {
+        font-size: 26px;
+        line-height: 80px;
+        span {
+            padding-right: 10px;
+        }
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        li {
+            padding-right: 20px;
+            font-size: 24px;
+            span {
+                padding-right: 15px;
+                vertical-align: middle;
+            }
+            canvas {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            align-items: center;
+        }
+    }
+    h4 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+}
+
+.detailsFixed {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 9997;
+}
+
+.skill-introduce {
+    h4 {
+        padding-left: 30px;
+        font-size: 30px;
+        line-height: 2;
+        color: #111;
+        padding-bottom: 10px;
+    }
+}
+
+.skill-image {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    li {
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100px;
+        height: 100px;
+        border-radius: 6px;
+        position: relative;
+    }
+    li.active:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        border: 4px orange solid;
+        z-index: 10;
+    }
+    li.active:after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background-color: #eee;
+        position: absolute;
+        left: 40%;
+        bottom: -50px;
+        transform-origin: center;
+        transform: rotate(45deg);
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.skill-content-main {
+    padding: 20px 30px;
+    background-color: #eee;
+    margin-top: 30px;
+    h5 {
+        font-size: 28px;
+        color: #111;
+    }
+    p {
+        line-height: 1.8;
+    }
+}
+
+.technique-item {
+    padding: 0 .3rem;
+    p {
+        color: #666;
+    }
+}
+
+.technique-items{
+    margin-bottom: 30px;
+    h5{
+        padding: 10px 0;
+    }
+    span{
+        font-size: 26px;
+    }
+    .equipment-item{
+        border-bottom: 1px solid #ddd;
+        padding: 30px 0;
+        img{
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+        }
+        p{
+            padding-bottom: 26px;
+        }
+    }
+}
+
+.video-list {
+    padding: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #fff;
+    &:last-child {
+        border-bottom: 1px solid #ddd;
+    }
+    .video-img {
+        position: relative;
+        width: 2rem;
+        height: 1.3rem;
+        margin-right: 20px;
+        .video-img-item {
+            width: 2rem;
+            height: 1.3rem;
+            background-repeat: no-repeat;
+            background-size: 115%;
+            background-position: 50% 50%;
+        }
+        .play-times {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            color: #fff;
+            font-size: 24px;
+        }
+    }
+    .video-item-content {
+        width: 100%;
+    }
+    h5 {
+        font-size: 28px;
+        color: #111;
+        height: 80px;
+        line-height: 40px;
+    }
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    .author-img {
+        width: .5rem;
+        height: .5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 10px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .author-name {
+        color: #666;
+    }
+}
+
+.author-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .day {
+        justify-content: flex-end;
+        color: #999;
+    }
+}
+
+.videoList {
+    background-color: #f5f5f5;
+}
+
+.skins{
+    padding: 30px 20px;
+    img{
+        width: 100%;
+    }
+    li{
+        margin-bottom: 20px;
+    }
+    p{
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+        font-size: 30px;
+        color: #333;
+    }
+}
+
+.skin-play{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+}
