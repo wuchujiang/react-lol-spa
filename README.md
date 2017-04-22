@@ -27,10 +27,10 @@ react + redux + immutable + less + scss + ES6/7 + webpack + fetch + react-router
 ```
 
 ## 演示
-[demo](http://123.207.20.202:8088)（请用chrome的手机模式预览）
+[demo](http://123.207.65.31:8088)（请用chrome的手机模式预览）
    
 ### 移动端扫描下方二维码
-![](http://i1.piimg.com/567571/66cd864a1af2db0f.png)
+![](http://i2.muimg.com/567571/4597e687f840290e.png)
 
 ## 效果图
 ![](http://i4.buimg.com/567571/03c016ef80dc0d5e.png)
