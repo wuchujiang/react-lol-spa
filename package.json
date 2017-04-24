@@ -2,7 +2,7 @@
   "name": "lol",
   "version": "1.0.1",
   "description": "react-demo",
-  "main": "server.js",
+  "main": "server_prd.js",
   "scripts": {
     "dev": "node server.js --progress --profile --colors --watch -p",
     "hot": "node server_hot.js --progress --profile --colors --watch -p",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "github",
-    "url": "https://github.com/bailicangdu/pxq"
+    "url": "https://github.com/wuchujiang/react-lol-spa"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bailicangdu/pxq/issues"
+    "url": "https://github.com/wuchujiang/react-lol-spa/issues"
   },
-  "homepage": "https://github.com/bailicangdu/pxq#readme",
+  "homepage": "https://github.com/wuchujiang/react-lol-spa#readme",
   "dependencies": {
     "antd-mobile": "^1.0.7",
     "classnames": "^2.2.5",
