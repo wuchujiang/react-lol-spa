@@ -1,4 +1,4 @@
-export const defaultSummoner = [{
+﻿export const defaultSummoner = [{
     id: 'Garen',
     key: 86,
     title: '盖伦',
@@ -114,6 +114,6 @@ export const game_type = (type) => {
 
 
 export const token = {
-    user: '433AE-B9774-390D4-BD4BE',
-    video: 'BA78B-8B040-4B6E4-E31BA'
+    user: '62696-4EE29-DC650-0B9D8',
+    video: '2E339-E0041-0B230-0A054'
 }
