@@ -1,4 +1,4 @@
-
+﻿
 ## 技术栈：
 
 react + redux + immutable + less + scss + ES6/7 + webpack + fetch + react-router按需加载 + react-transform热替换 + webpack-dev-server + http-proxy-middleware
@@ -10,7 +10,10 @@ react + redux + immutable + less + scss + ES6/7 + webpack + fetch + react-router
 
  	cd react-lol-spa
 
- 	npm install 
+ 	npm install
+
+	token申请地址：http://www.games-cube.com/    在/src/Config/staticData下修改token即可。
+	 
 
 
 ## 运行（nodejs 6.0+）
