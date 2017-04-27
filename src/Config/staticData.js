@@ -114,6 +114,6 @@ export const game_type = (type) => {
 
 
 export const token = {
-    user: 'A62AD-17977-9E726-72891',
-    video: 'E7295-77544-EE58C-12251'
+    user: '2D46D-44464-44D2A-4D2D4',
+    video: '98427-10787-97169-AF046'
 }
